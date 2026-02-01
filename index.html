@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>RavenStore</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+  <div id="spinPopup" class="popup">
+  <div class="popup-box">
+    <h2 id="spinTitle"></h2>
+    <p id="spinText"></p>
+    <button onclick="closeSpin()">LANJUT</button>
+  </div>
+</div>
+
+<header>
+  <b>Hi, Sobat Gamers</b>
+  <a href="https://ravenstore01.netlify.app" target="_blank" style="color:#fff;font-size:20px">
+    <i class="fa-solid fa-gamepad"></i>
+  </a>
+</header>
+
+<div class="content">
+
+<!-- HOME -->
+<div id="home" class="section active">
+  <h1 class="home-title">RAVENSTORE</h1>
+<p class="home-subtitle">
+  Informasi, event, dan update terbaru seputar RavenStore, Mobile Legends, dan Free Fire
+</p>
+  <div class="card">
+  <h3>Petunjuk Penggunaan RavenStore</h3>
+
+  <ol class="guide-list">
+    <li>Login menggunakan PIN yang kamu dapatkan saat pendaftaran.</li>
+    <li>Gunakan fitur Spin Poin untuk mendapatkan poin harian.</li>
+    <li>Ikuti event Tebak Angka sesuai digit yang ditentukan.</li>
+    <li>Poin dapat digunakan untuk di tukarkan dengan diamond atau item lainnga di RavenStore.</li>
+  </ol>
+</div>
+  <div id="newsBox"></div>
+</div>
+
+<!-- SPIN -->
+<div id="spin" class="section">
+  <div class="card spin-card">
+
+  <div class="wheel-wrapper">
+    <div class="wheel-pointer"></div>
+
+    <div class="wheel" id="wheel">
+  <span class="wheel-text t1">ZONK</span>
+  <span class="wheel-text t2">1 poin</span>
+  <span class="wheel-text t3">3 poin</span>
+  <span class="wheel-text t4">10 poin</span>
+  <span class="wheel-text t5">100 poin</span>
+      <div class="wheel-center">SPIN</div>
+    </div>
+  </div>
+
+  <button id="spinBtn" onclick="spin()">SPIN POIN</button>
+  <div id="spinInfo" style="margin-top:10px;font-size:13px;color:#aaa"></div>
+  <p class="spin-note">Spin gratis 1x setiap hari</p>
+
+</div>
+<div class="card">
+  <h3>Petunjuk & Informasi Spin Poin</h3>
+
+  <p style="font-size:13px;color:#cbd5f5;line-height:1.6">
+    Spin Poin adalah fitur harian untuk mendapatkan poin gratis yang bisa kamu kumpulkan
+    dan gunakan sebagai keuntungan di RavenStore.
+  </p>
+
+  <b style="font-size:13px">Cara Menggunakan Spin Poin:</b>
+  <ol class="guide-list">
+    <li>Setiap akun hanya dapat melakukan <b>spin 1 kali dalam 1 hari</b> (00:00 – 23:59 WIB).</li>
+    <li>Tekan tombol <b>SPIN POIN</b> lalu tunggu roda berhenti.</li>
+    <li>Hadiah poin akan langsung masuk ke akunmu secara otomatis.</li>
+    <li>Jika sudah spin hari ini, tombol akan terkunci dan bisa digunakan kembali besok.</li>
+  </ol>
+
+  <b style="font-size:13px">Informasi Penting Poin:</b>
+  <ul class="guide-list">
+    <li>Poin akan <b>di-reset menjadi 0 setiap hari Minggu</b>.</li>
+    <li>Sebelum reset, poin akan dipindahkan ke <b>RavenPoin</b> di akun RavenStore kamu.</li>
+    <li>Pastikan username dan email yang kamu gunakan sama dengan yang ada di akun ravenstore<b>agar poin bisa tertransfer otomatis ke akun ravenstore kamu</b>.</li>
+  </ul>
+</div>
+</div>
+
+<!-- TEBAK -->
+<div id="tebak" class="section">
+  <div class="card">
+    <b>Tebak Angka</b><br><br>
+    <div class="pin-box" id="guessBox"></div><br>
+    <button id="guessBtn" onclick="submitGuess()">KIRIM</button>
+  </div>
+  <div class="card">
+  <h3>Petunjuk Tebak Angka</h3>
+
+  <p style="font-size:13px; color:#cbd5f5; line-height:1.6">
+    Tebak Angka adalah event tantangan terbatas di RavenStore, 
+    di mana kamu harus menebak angka rahasia yang telah ditentukan.
+  </p>
+
+  <ul style="font-size:13px; color:#cbd5f5; line-height:1.7; padding-left:18px">
+    <li>Jumlah digit angka <b>berbeda-beda</b> di setiap event (3–6 digit).</li>
+    <li>Masukkan tebakan sesuai jumlah digit yang diminta.</li>
+    <li>Jika tebakan <b>benar</b>, kamu akan langsung mendapatkan poin.</li>
+    <li>Jika tebakan <b>salah</b>, kamu masih bisa mencoba lagi selama event aktif.</li>
+    <li>Event akan <b>otomatis berakhir</b> jika sudah ada pemenang.</li>
+  </ul>
+
+  <p style="font-size:12px; color:#94a3b8; margin-top:10px">
+    ⚠️ Catatan:
+    <br>
+    Poin yang diperoleh dari Tebak Angka akan dikumpulkan di akun ini.
+    Setiap <b>hari Minggu</b>, seluruh poin akan di-reset menjadi <b>0</b>
+    dan <b>dipindahkan secara manual</b> ke RavenPoin pada akun RavenStore kamu
+    di website top up game.
+  </p>
+</div>
+
+</div>
+
+<!-- SAYA -->
+<div id="saya" class="section">
+
+  <!-- PROFIL -->
+  <div class="card" style="text-align:center">
+    <div class="avatar" id="avatar">U</div>
+    <div id="profile" style="font-size:13px; line-height:1.7"></div>
+  </div>
+
+  <!-- POIN -->
+  <div class="card" style="text-align:center">
+    <div style="font-size:13px; color:#94a3b8">Total Poin Kamu</div>
+    <div id="pointBig" style="font-size:34px;font-weight:800;color:#fff600;margin:6px 0">
+      0
+    </div>
+    <div style="font-size:12px;color:#94a3b8">
+      Reset setiap hari <b>Minggu</b>
+    </div>
+  </div>
+
+  <!-- INFO -->
+  <div class="card">
+    <h3 style="margin-top:0">Informasi Akun</h3>
+
+<ul class="guide-list">
+  <li>
+    <b>Poin</b> adalah saldo event yang kamu dapatkan dari
+    <b>Spin Poin</b> dan <b>Tebak Angka</b>.
+  </li>
+
+  <li>
+    Poin <b>tidak dapat diuangkan</b> dan hanya digunakan sebagai
+    bonus & reward di ekosistem RavenStore.
+  </li>
+
+  <li>
+    Setiap <b>hari Minggu</b>, seluruh poin di akun ini akan
+    <b>di-reset menjadi 0</b>.
+  </li>
+
+  <li>
+    Sebelum reset, poin akan <b>dipindahkan</b>
+    ke <b>RavenPoin</b> pada akun RavenStore kamu.
+  </li>
+
+  <li>
+    <b>Username dan Email</b> di akun ini
+    <b>WAJIB sama</b> dengan akun RavenStore
+    agar pemindahan poin tidak bermasalah.
+  </li>
+
+  <li>
+    RavenStore <b>tidak bertanggung jawab</b> jika poin gagal
+    dipindahkan akibat kesalahan data akun.
+  </li>
+</ul>
+
+<p style="font-size:12px;color:#94a3b8;margin-top:10px">
+  💡 Tips:  
+  Pastikan data akun kamu sudah benar sebelum mengikuti event
+  agar seluruh poin bisa diproses dengan aman.
+</p>
+  </div>
+
+  <!-- LOGOUT -->
+  <div class="card">
+    <button onclick="logout()" style="background:#ef4444;color:#fff">
+      LOGOUT
+    </button>
+  </div>
+
+</div>
+
+</div>
+
+<nav>
+  <div class="active" onclick="showTab('home',this)">
+    <i class="fa-solid fa-house"></i><br>Home
+  </div>
+  <div onclick="showTab('spin',this)">
+    <i class="fa-solid fa-circle-notch"></i><br>Spin
+  </div>
+  <div onclick="showTab('tebak',this)">
+    <i class="fa-solid fa-keyboard"></i><br>Tebak
+  </div>
+  <div onclick="showTab('saya',this)">
+    <i class="fa-solid fa-user"></i><br>Saya
+  </div>
+</nav>
+
+<script src="js/index.js" defer></script>
+
+</body>
+</html>

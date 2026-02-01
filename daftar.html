@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Daftar Challenge RavenStore</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/daftar.css">
+
+</head>
+<body>
+
+<div class="card">
+  <h2>RavenStore Challenge</h2>
+  <div class="desc">
+    Daftar untuk mengikuti challenge berhadiah poin
+  </div>
+
+  <div class="warn">
+    ⚠ Username & email HARUS sama dengan akun RavenStore.
+    Jika berbeda, poin tidak kami tanggung.
+  </div>
+
+  <input id="username" class="input" placeholder="Username RavenStore">
+  <input id="email" class="input" placeholder="Email RavenStore">
+
+  <div style="margin:10px 0;font-size:13px;color:#cbd5f5;">
+    <label>
+    <input type="checkbox" id="agree">
+    Saya menyetujui <a href="kebijakan.html" style="color:#fff600">Syarat & Ketentuan</a>
+  </label>
+  </div>
+
+  <button onclick="register()">Daftar & Masuk</button>
+
+  <div class="footer">© 2026 RavenStore Official</div>
+</div>
+
+<!-- MODAL -->
+<div id="overlay" style="
+position:fixed;inset:0;
+background:rgba(2,6,23,.85);
+display:none;align-items:center;justify-content:center;z-index:99;">
+  <div style="
+  background:#020617;
+  padding:28px;
+  border-radius:16px;
+  border:1px solid #1e293b;
+  text-align:center;
+  min-width:220px;">
+    <div id="icon"></div>
+    <div id="text" style="margin-top:12px;font-size:14px"></div>
+    <div id="pinBox" style="
+  margin-top:14px;
+  font-size:20px;
+  font-weight:700;
+  color:#fff600;
+  display:none;
+"></div>
+
+<button id="btnNext" onclick="goNext()" style="
+  display:none;
+  margin-top:16px;
+  padding:10px 18px;
+  border-radius:10px;
+  border:none;
+  background:#fff600;
+  font-weight:700;
+  cursor:pointer;
+">
+  LANJUT
+</button>
+  </div>
+</div>
+
+<script src="js/daftar.js" defer></script>
+
+</body>
+</html>
