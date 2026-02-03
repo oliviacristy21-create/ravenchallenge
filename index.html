@@ -203,16 +203,31 @@
 </div>
 
 <nav>
-  <div class="active" onclick="showTab('home',this)">
-    <i class="fa-solid fa-house"></i><br>Home
+  <div class="lock" data-tab="home" onclick="showTab('home',this)">
+    <i class="fa-solid fa-house"></i><br>
+    Home
+    <span class="lock-icon">
+      <i class="fa-solid fa-lock"></i>
+    </span>
   </div>
-  <div onclick="showTab('spin',this)">
-    <i class="fa-solid fa-circle-notch"></i><br>Spin
+
+  <div class="lock" data-tab="spin" onclick="showTab('spin',this)">
+    <i class="fa-solid fa-circle-notch"></i><br>
+    Spin
+    <span class="lock-icon">
+      <i class="fa-solid fa-lock"></i>
+    </span>
   </div>
-  <div onclick="showTab('tebak',this)">
-    <i class="fa-solid fa-keyboard"></i><br>Tebak
+
+  <div class="lock" data-tab="tebak" onclick="showTab('tebak',this)">
+    <i class="fa-solid fa-keyboard"></i><br>
+    Tebak
+    <span class="lock-icon">
+      <i class="fa-solid fa-lock"></i>
+    </span>
   </div>
-  <div onclick="showTab('saya',this)">
+
+  <div data-tab="saya" onclick="showTab('saya',this)">
     <i class="fa-solid fa-user"></i><br>Saya
   </div>
 </nav>
