@@ -276,11 +276,47 @@ function showPopup(title,text){
   spinPopup.style.display="flex";
 }
 
+function lockMenuIfNotLogin() {
+  if (!isLogin()) {
+    // kunci menu
+    document.querySelectorAll("nav div.lock").forEach(el => {
+      el.style.pointerEvents = "none";
+      el.style.opacity = "0.45";
+      const icon = el.querySelector(".lock-icon");
+      if (icon) icon.style.display = "block";
+    });
+
+    // paksa ke tab saya
+    document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+    document.getElementById("saya").classList.add("active");
+
+    document.querySelectorAll("nav div").forEach(n => n.classList.remove("active"));
+    document.querySelector("nav div[data-tab='saya']").classList.add("active");
+
+    return;
+  }
+
+  // jika SUDAH login → buka kunci
+  document.querySelectorAll("nav div.lock").forEach(el => {
+    el.style.pointerEvents = "auto";
+    el.style.opacity = "1";
+    const icon = el.querySelector(".lock-icon");
+    if (icon) icon.style.display = "none";
+  });
+}
+
+function activateHome() {
+  showTab("home", document.querySelector("nav div[data-tab='home']"));
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   loadNews();
   loadChallenge();
   loadProfile();
+  lockMenuIfNotLogin();
+
   if (isLogin()) {
+    showTab("home", document.querySelector("nav div[data-tab='home']"));
     checkSpinStatus();
   }
 });
