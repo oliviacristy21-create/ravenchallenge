@@ -160,6 +160,7 @@ async function submitGuess(){
 
   if(r.status === "win"){
     showPopup("SELAMAT",`Kamu mendapatkan ${r.reward} poin!`);
+    fireRealConfetti();
     loadProfile();
     currentEvent = null;
   }
@@ -241,6 +242,7 @@ function showSpinResult(label, point){
   if(point > 0){
   spinTitle.textContent = "SELAMAT";
   spinText.textContent = `Kamu mendapatkan ${label}`;
+  fireRealConfetti();
   loadProfile(); // ⬅️ ini penting
 }
 else{
@@ -320,3 +322,23 @@ document.addEventListener("DOMContentLoaded", () => {
     checkSpinStatus();
   }
 });
+
+function fireRealConfetti() {
+  const colors = ['#FFD54F', '#FF5252', '#40C4FF', '#69F0AE', '#B388FF'];
+
+  const base = {
+    particleCount: 22,     // ⬅️ naik dikit (sebelumnya 14)
+    startVelocity: 36,     // ⬅️ lebih nendang tapi aman
+    spread: 78,            // ⬅️ ledakan makin lebar
+    ticks: 200,            // ⬅️ jatuhnya lebih lama
+    gravity: 1.15,
+    scalar: 0.95,
+    shapes: ['square'],
+    colors
+  };
+
+  confetti({ ...base, angle: 90,  origin: { x: 0.5, y: 0.48 } });
+  setTimeout(() => confetti({ ...base, angle: -90, origin: { x: 0.5, y: 0.52 } }), 120);
+  setTimeout(() => confetti({ ...base, angle: 0,   origin: { x: 0.48, y: 0.5 } }), 240);
+  setTimeout(() => confetti({ ...base, angle: 180, origin: { x: 0.52, y: 0.5 } }), 360);
+}
