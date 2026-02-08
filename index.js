@@ -214,26 +214,48 @@ async function checkSpinStatus(){
 checkSpinStatus();
 setInterval(checkSpinStatus, 5000);
 
-function animateWheel(label, point){
+function animateWheel(label, point) {
   const wheel = document.getElementById("wheel");
 
-  // mapping hadiah → posisi roda
-  const map = {
-    "ZONK": 0,
-    "1 poin": 60,
-    "3 poin": 120,
-    "10 poin": 180,
-    "100 poin": 240
-  };
+  const prizes = [
+    "ZONK",
+    "1 poin",
+    "3 poin",
+    "10 poin",
+    "100 poin"
+  ];
 
-  const base = 360 * 5; // muter 5x
-  const deg = base + (map[label] || 300);
+  const index = prizes.indexOf(label);
+  if (index === -1) return;
 
-  wheel.style.transform = `rotate(${deg}deg)`;
+  const total = prizes.length; // 5
+  const sector = 360 / total;  // 72°
+  const center = sector / 2;   // 36°
+  const pointer = 270;         // panah di atas
 
-  setTimeout(()=>{
+  const spins = 7;
+
+  const finalDeg =
+    spins * 360 +
+    pointer -
+    (index * sector) -
+    center;
+
+  wheel.style.transition = "none";
+  wheel.style.transform = "rotate(0deg) rotateX(6deg)";
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      wheel.style.transition =
+        "transform 5s cubic-bezier(0.15, 0.85, 0.25, 1)";
+      wheel.style.transform =
+        `rotate(${finalDeg}deg) rotateX(6deg)`;
+    });
+  });
+
+  setTimeout(() => {
     showSpinResult(label, point);
-  },4000);
+  }, 5200);
 }
 
 function showSpinResult(label, point){
@@ -248,6 +270,20 @@ function showSpinResult(label, point){
 else{
   spinTitle.textContent = "ZONK";
   spinText.textContent = "Kamu belum beruntung hari ini, coba lagi besok.";
+}
+
+const ringFast = document.getElementById("ringFast");
+
+// reset dulu
+ringFast.classList.remove("win");
+
+if (point > 0) {
+  ringFast.classList.add("win");
+
+  // matikan setelah 10 detik
+  setTimeout(() => {
+    ringFast.classList.remove("win");
+  }, 10000);
 }
 }
 
