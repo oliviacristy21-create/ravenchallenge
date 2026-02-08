@@ -31,8 +31,8 @@ async function loadProfile(){
 
   const f = new URLSearchParams();
   f.append("action","getUserProfile");
-  f.append("token",token);
-
+  f.append("token", localStorage.getItem("session_token"));
+  
   const r = await fetch(API,{method:"POST",body:f}).then(r=>r.json());
   if(!r.status) return logout();
 
