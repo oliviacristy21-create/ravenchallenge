@@ -47,23 +47,30 @@
 
 <!-- SPIN -->
 <div id="spin" class="section">
-  <div class="card spin-card">
+  <div class="card1 spin-card">
 
   <div class="wheel-wrapper">
-    <div class="wheel-pointer"></div>
+<div class="spin-ring ring-slow"></div>
+<div class="spin-ring ring-fast" id="ringFast"></div>
+  <div class="wheel-outer">
+    <div class="wheel-gloss"></div>
 
     <div class="wheel" id="wheel">
-  <span class="wheel-text t1">ZONK</span>
-  <span class="wheel-text t2">1 poin</span>
-  <span class="wheel-text t3">3 poin</span>
-  <span class="wheel-text t4">10 poin</span>
-  <span class="wheel-text t5">100 poin</span>
+<span class="wheel-text t1"><i class="fa-solid fa-skull"></i></span>
+<span class="wheel-text t2"><i class="fa-solid fa-coins"></i> 1</span>
+<span class="wheel-text t3"><i class="fa-solid fa-coins"></i> 3</span>
+<span class="wheel-text t4"><i class="fa-solid fa-coins"></i> 10</span>
+<span class="wheel-text t5"><i class="fa-solid fa-coins"></i> 100</span>
+
       <div class="wheel-center">SPIN</div>
     </div>
   </div>
 
+  <div class="wheel-pointer"></div>
+</div>
+
   <button id="spinBtn" onclick="spin()">SPIN POIN</button>
-  <div id="spinInfo" style="margin-top:10px;font-size:13px;color:#aaa"></div>
+  <div id="spinInfo" style="margin-top:10px;font-size:13px;color:#fff"></div>
   <p class="spin-note">Spin gratis 1x setiap hari</p>
 
 </div>
