@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="penukaran.css">
+<title>Tukar Poin</title>
+
+</head>
+<body>
+<header>
+  <b>Hi, Sobat Gamers</b>
+  <div id="userPoint" style="
+background:#1e293b;
+padding:6px 12px;
+border-radius:20px;
+font-size:13px;
+font-weight:600;
+color:#fff600;
+">
+  💰 ....
+</div>
+</header>
+
+<div class="content">
+
+<div class="title">
+  <h1>TUKARKAN POINMU</h1>
+  <p>jika status penukaran sukses, item akan langsung masuk ke akun game kamu</p>
+</div>
+
+<div id="verifInfo" style="
+margin:15px 20px;
+padding:12px;
+border-radius:10px;
+background:#7f1d1d;
+color:#fecaca;
+font-size:13px;
+display:none;
+">
+⚠ Akun kamu belum diverifikasi.  
+Lakukan pembelian minimal Rp20.000 untuk membuka fitur penukaran poin.
+</div>
+
+<div class="step-container">
+  <div class="step-header">
+    <div class="step-left">✓</div>
+    <div class="step-right">FREE FIRE</div>
+  </div>
+  <div class="grid" id="listReward">
+    <div class="loading">Memuat produk...</div>
+  </div>
+</div>
+
+<div class="step-container" style="margin-top:20px;">
+  <div class="step-header">
+    <div class="step-left">$</div>
+    <div class="step-right">Riwayat Penukaran</div>
+  </div>
+
+  <div style="padding:15px;">
+  <table id="historyTable" style="width:100%;border-collapse:collapse;font-size:12px;">
+    <thead>
+      <tr style="background:#1e293b;color:#fff;">
+        <th style="padding:8px;">Waktu</th>
+        <th>Item</th>
+        <th>Poin</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody id="historyBody">
+      <tr>
+        <td colspan="4" style="text-align:center;padding:10px;color:#94a3b8;">
+          Memuat riwayat...
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  </div>
+  
+</div>
+</div>
+
+</div>
+
+<div style="
+margin-top:10px;
+padding:20px;
+text-align:center;
+font-size:12px;
+color:#64748b;
+border-top:1px solid #1e293b;
+">
+
+  <div style="font-weight:600;color:#94a3b8;">
+    RavenStore Official
+  </div>
+
+  <div style="margin-top:10px;">
+    © 2026 RavenStore. All rights reserved.
+  </div>
+
+</div>
+
+<div id="overlay" style="
+position:fixed;inset:0;
+background:rgba(2,6,23,.85);
+display:none;align-items:center;justify-content:center;z-index:99;">
+
+  <div style="
+  background:#020617;
+  padding:28px;
+  border-radius:16px;
+  border:1px solid #7c3aed;
+  text-align:center;
+  min-width:220px;">
+
+    <div id="icon"></div>
+<div id="text" style="margin-top:12px;font-size:12px"></div>
+
+<div id="actions" style="margin-top:16px;display:none;">
+  <button onclick="confirmTukar()" style="
+    padding:10px 18px;
+    border-radius:10px;
+    border:none;
+    background:#fff600;
+    font-weight:700;
+    cursor:pointer;
+  ">YA</button>
+
+  <button onclick="closeModal()" style="
+    margin-left:10px;
+    padding:10px 18px;
+    border-radius:10px;
+    border:none;
+    background:#1e293b;
+    color:white;
+    cursor:pointer;
+  ">BATAL</button>
+</div>
+
+<div id="singleAction" style="margin-top:16px;display:none;">
+  <button onclick="closeModal()" style="
+    padding:10px 18px;
+    border-radius:10px;
+    border:none;
+    background:#fff600;
+    font-weight:700;
+    cursor:pointer;
+  ">OKE</button>
+</div>
+
+  </div>
+</div>
+
+<script src="penukaran.js" defer></script>
+
+</body>
+</html>
