@@ -32,7 +32,7 @@ async function loadProfile(){
   const f = new URLSearchParams();
   f.append("action","getUserProfile");
   f.append("token", localStorage.getItem("session_token"));
-  
+
   const r = await fetch(API,{method:"POST",body:f}).then(r=>r.json());
   if(!r.status) return logout();
 
@@ -171,6 +171,148 @@ async function submitGuess(){
     showPopup("EVENT BERAKHIR","Nantikan event selanjutnya.");
     currentEvent = null;
   }
+}
+
+async function submitRedeem(){
+  const code = document.getElementById("redeemInput").value;
+  const token = localStorage.getItem("session_token");
+
+  if(!code){
+    showPopup("ERROR", "Masukkan kode terlebih dahulu");
+    return;
+  }
+
+  try{
+    const res = await fetch(API,{
+      method:"POST",
+      body:new URLSearchParams({
+        action:"redeemCode",
+        token: token,
+        code: code
+      })
+    });
+
+    const data = await res.json();
+
+    if(data.status){
+      // ✅ BERHASIL
+      showPopup("BERHASIL", data.message);
+      fireRealConfetti();
+      loadProfile();
+      document.getElementById("redeemInput").value = "";
+    }else{
+      // ❌ GAGAL
+      showPopup("GAGAL", data.message);
+    }
+
+  }catch(err){
+    showPopup("ERROR", "Server error");
+    console.error(err);
+  }
+}
+
+function kirimPoin(){
+  const target = document.getElementById("targetUser").value;
+  const jumlah = document.getElementById("jumlahPoin").value;
+
+  if(!target || !jumlah){
+    showPopup("ERROR","Isi semua data");
+    return;
+  }
+
+  // simpan sementara
+  window.tmpTarget = target;
+  window.tmpJumlah = jumlah;
+
+  document.getElementById("confirmText").innerText =
+    `Kirim ${jumlah} poin ke ${target}?`;
+
+  document.getElementById("confirmPopup").style.display = "flex";
+}
+
+async function prosesTransfer(){
+  document.getElementById("confirmPopup").style.display = "none";
+
+  document.getElementById("spinTitle").innerText = "MEMPROSES";
+  document.getElementById("spinText").innerText = "Mengirim poin...";
+  document.getElementById("spinPopup").style.display = "flex";
+
+  const token = localStorage.getItem("session_token");
+
+  const res = await fetch(API,{
+    method:"POST",
+    body:new URLSearchParams({
+      action:"transferPoin",
+      token: token,
+      target: window.tmpTarget,
+      jumlah: window.tmpJumlah
+    })
+  });
+
+  const data = await res.json();
+
+  if(data.status){
+    fireRealConfetti();
+    loadProfile();
+    loadTransferHistory();
+
+    showPopup("BERHASIL", data.message);
+  }else{
+    showPopup("GAGAL", data.message);
+  }
+}
+
+function closeConfirm(){
+  document.getElementById("confirmPopup").style.display = "none";
+}
+
+async function checkTransferNotif(){
+  const token = localStorage.getItem("session_token");
+
+  const res = await fetch(API,{
+    method:"POST",
+    body:new URLSearchParams({
+      action:"getTransferNotif",
+      token: token
+    })
+  });
+
+  const data = await res.json();
+
+  if(data.status && data.data.length > 0){
+    data.data.forEach(n=>{
+      pushNotif(`💰 Kamu menerima ${n.jumlah} poin dari ${n.from}`);
+    });
+  }
+}
+
+async function loadTransferHistory(){
+  const token = localStorage.getItem("session_token");
+
+  const res = await fetch(API,{
+    method:"POST",
+    body:new URLSearchParams({
+      action:"getTransferHistory",
+      token: token
+    })
+  });
+
+  const data = await res.json();
+
+  let html = "<div class='card'><h3>Riwayat Transfer</h3>";
+
+  data.data.forEach(d=>{
+    html += `
+      <div style="font-size:13px;margin-bottom:6px;">
+        ${d.tipe === 'kirim' ? '➡️ Kirim ke' : '⬅️ Terima dari'} 
+        <b>${d.nama}</b> - ${d.jumlah} poin
+      </div>
+    `;
+  });
+
+  html += "</div>";
+
+  document.getElementById("transferHistory").innerHTML = html;
 }
 
 async function spin(){
@@ -352,6 +494,9 @@ document.addEventListener("DOMContentLoaded", () => {
   loadChallenge();
   loadProfile();
   lockMenuIfNotLogin();
+  lockRedeemIfNotLogin();
+  checkTransferNotif();
+  startLiveFeed();
 
   if (isLogin()) {
     showTab("home", document.querySelector("nav div[data-tab='home']"));
@@ -377,4 +522,133 @@ function fireRealConfetti() {
   setTimeout(() => confetti({ ...base, angle: -90, origin: { x: 0.5, y: 0.52 } }), 120);
   setTimeout(() => confetti({ ...base, angle: 0,   origin: { x: 0.48, y: 0.5 } }), 240);
   setTimeout(() => confetti({ ...base, angle: 180, origin: { x: 0.52, y: 0.5 } }), 360);
+}
+
+function goTukarPoin() {
+  window.location.href = "penukaran.html";
+}
+
+function lockRedeemIfNotLogin(){
+  const btn = document.getElementById("redeemBtn");
+  const icon = document.getElementById("redeemLock");
+
+  if(!isLogin()){
+    btn.classList.add("locked");
+    icon.style.display = "block";
+  }else{
+    btn.classList.remove("locked");
+    icon.style.display = "none";
+  }
+}
+
+function goRedeem(){
+  if(!isLogin()){
+    showPopup("LOGIN DULU","Silakan login untuk membuka fitur ini.");
+    return;
+  }
+
+  showTab("redeem", document.querySelector(".nav-center"));
+}
+
+function openQuick(){
+  document.getElementById("quickPopup").style.display = "flex";
+}
+
+function closeQuick(){
+  document.getElementById("quickPopup").style.display = "none";
+}
+
+function setJumlah(val){
+  document.getElementById("jumlahPoin").value = val;
+  closeQuick();
+}
+
+let riwayatVisible = false;
+
+async function toggleRiwayat(){
+  const el = document.getElementById("transferHistory");
+
+  if(!riwayatVisible){
+    el.style.display = "block";
+
+    // ⬇️ loading dulu
+    el.innerHTML = `
+      <div class="card" style="text-align:center">
+        <i class="fa-solid fa-spinner fa-spin"></i>
+        <div style="font-size:13px;margin-top:6px;color:#94a3b8">
+          Memuat riwayat...
+        </div>
+      </div>
+    `;
+
+    await loadTransferHistory();
+
+    riwayatVisible = true;
+  }else{
+    el.style.display = "none";
+    riwayatVisible = false;
+  }
+}
+
+function startLiveFeed(){
+  const el1 = document.getElementById("liveTrack1");
+  const el2 = document.getElementById("liveTrack2");
+
+  const names = [
+    "U177*******274",
+    "U177*******433",
+    "U177*******909",
+    "U177*******567",
+    "U177*******874",
+    "U177*******563",
+    "U177*******987",
+    "U177*******197",
+    "U177*******084",
+    "U177*******210"
+  ];
+
+  const rewards = [10,20,50,100];
+
+  let text = "";
+
+  for(let i=0;i<20;i++){
+    const user = names[Math.floor(Math.random()*names.length)];
+    const poin = rewards[Math.floor(Math.random()*rewards.length)];
+
+    text += `${user} mendapatkan ${poin} poin 🔥   •   `;
+  }
+
+  el1.innerText = text;
+  el2.innerText = text; // duplikat biar loop halus
+}
+
+let notifQueue = [];
+let notifRunning = false;
+
+function pushNotif(text){
+  notifQueue.push(text);
+  runNotifQueue();
+}
+
+function runNotifQueue(){
+  if(notifRunning) return;
+  if(notifQueue.length === 0) return;
+
+  notifRunning = true;
+
+  const el = document.getElementById("topNotif");
+  const text = notifQueue.shift();
+
+  el.innerText = text;
+  el.classList.add("show");
+
+  setTimeout(()=>{
+    el.classList.remove("show");
+
+    setTimeout(()=>{
+      notifRunning = false;
+      runNotifQueue();
+    }, 400);
+
+  }, 2500);
 }
