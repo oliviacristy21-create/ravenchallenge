@@ -50,16 +50,23 @@ header span{font-size:20px}
 nav{
   position:fixed;
   bottom:0;left:0;right:0;
-  height:60px;
+  height:65px;
   background:#020617;
   border-top:1px solid #1e293b;
+
   display:flex;
+  justify-content:space-around; /* 🔥 kunci utama */
+  align-items:center;
+
+  padding:0 10px;
 }
+
+/* semua menu */
 nav div{
-  flex:1;
+  flex:none; /* ❌ HAPUS flex:1 */
+  width:60px; /* biar konsisten */
   text-align:center;
   font-size:12px;
-  padding-top:15px;
   cursor:pointer;
   color:#94a3b8;
 }
@@ -460,4 +467,325 @@ nav div.lock {
     ringFast .6s linear infinite,
     ringFlash .25s ease-in-out infinite;
   filter: blur(16px) brightness(1.6);
+}
+
+.btn-tukar {
+  width: 50%;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, #fff600, #facc15);
+  color: #000;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-tukar:hover {
+  transform: scale(0.97);
+  opacity: 0.9;
+}
+
+.nav-center{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  top:-30px; /* 🔥 naikkan sedikit */
+
+  width:62px;
+  height:62px;
+  border-radius:50%;
+
+  background:linear-gradient(135deg,#7c3aed,#4f46e5);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:white;
+  font-size:26px;
+
+  box-shadow:
+    0 10px 25px rgba(124,58,237,0.6),
+    0 0 0 6px #020617;
+
+  z-index:20;
+}
+
+.nav-center i{
+  transform:translateY(-2px);
+}
+
+.nav-center:active{
+  transform:translateX(-50%) scale(0.92);
+}
+
+.redeem-header{
+  text-align:center;
+  margin-top:10px;
+}
+
+.redeem-icon{
+  width:70px;
+  height:70px;
+  margin:0 auto 10px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#f59e0b,#facc15);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  color:#000;
+  box-shadow:0 6px 20px rgba(250,204,21,0.5);
+}
+
+.redeem-header h2{
+  margin:5px 0;
+}
+
+.redeem-header p{
+  font-size:13px;
+  color:#94a3b8;
+}
+
+.redeem-card{
+  background:#0f172a;
+  margin:20px;
+  padding:18px;
+  border-radius:16px;
+  border:1px solid #1e293b;
+}
+
+.redeem-card input{
+  width:91%;
+  padding:12px;
+  border-radius:10px;
+  border:none;
+  outline:none;
+  background:#020617;
+  color:white;
+  font-size:14px;
+}
+
+.redeem-card button{
+  width:100%;
+  margin-top:12px;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  background:linear-gradient(90deg,#f59e0b,#facc15);
+  font-weight:700;
+  color:black;
+  cursor:pointer;
+}
+
+.redeem-card button:active{
+  transform:scale(0.96);
+}
+
+.redeem-info{
+  margin:0 20px;
+  font-size:12px;
+  color:#64748b;
+  display:flex;
+  gap:6px;
+  align-items:center;
+}
+
+nav div:nth-child(3){
+  margin-right:30px; /* kasih jarak sebelum tombol tengah */
+}
+
+nav div:nth-child(4){
+  margin-left:30px; /* kasih jarak setelah tombol tengah */
+}
+
+.nav-center.active{
+  transform:translateX(-50%) scale(1.1);
+  box-shadow:
+    0 0 20px rgba(124,58,237,0.9),
+    0 0 0 6px #020617;
+}
+
+#redeemBtn.locked{
+  opacity:0.45;
+}
+
+#redeemBtn span{
+  position:absolute;
+  top:6px;
+  right:8px;
+  font-size:11px;
+  color:#fff600;
+}
+
+.input-group{
+  display:flex;
+  width:100%;
+  margin-top:10px;
+}
+
+.input-group input{
+  flex:1;
+  padding:12px;
+  border-radius:10px;
+  border:none;
+  background:#020617;
+  color:white;
+}
+
+.input-group button{
+  width:45px;
+  margin-left:6px;
+  border-radius:10px;
+  border:none;
+  background:#1e293b;
+  color:white;
+}
+
+.quick-grid{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:10px;
+  margin-top:10px;
+}
+
+.quick-grid button{
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  background:#1e293b;
+  color:white;
+  font-weight:600;
+}
+
+.quick-grid button:active{
+  transform:scale(0.95);
+}
+
+.input-wrap{
+  display:flex;
+  align-items:center;
+  background:#020617;
+  border-radius:10px;
+  border:1px solid #1e293b;
+  overflow:hidden;
+  margin-top:10px;
+}
+
+.input-wrap input{
+  flex:1;
+  padding:12px;
+  border-radius:10px;
+  border:none;
+  background:#020617;
+  color:white;
+}
+
+.input-wrap button{
+  width:45px;
+  height:100%;
+  border-radius:10px;
+  border:none;
+  background:#facc15;
+  color:black;
+  font-size:14px;
+  margin-top: 0px;
+}
+
+.live-feed{
+  position: relative;
+  left: -16px;
+  width: calc(100% + 32px); /* full layar */
+  
+  margin: 20px 0;
+  height: 42px;
+  overflow: hidden;
+  background: #020617;
+  border-top: 1px solid #1e293b;
+  border-bottom: 1px solid #1e293b;
+}
+
+/* neon tetap */
+.live-feed::before,
+.live-feed::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  height:2px;
+  background:linear-gradient(90deg,transparent,#fff600,transparent);
+  animation: glowMove 3s linear infinite;
+}
+
+.live-feed::before{ top:0; }
+.live-feed::after{ bottom:0; }
+
+/* track */
+.live-track{
+  display: flex;
+  width: max-content;
+  animation: scrollLoop 60s linear infinite;
+}
+
+.live-track div{
+  white-space: nowrap;
+  font-size: 13px;
+  line-height: 42px;
+  padding-right: 50px; /* jarak antar text */
+  color: #fff;
+}
+
+/* animasi infinite */
+@keyframes scrollLoop{
+  from{ transform: translateX(0); }
+  to{ transform: translateX(-50%); }
+}
+
+.transfer-info{
+  margin-top: 12px;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.transfer-info h4{
+  margin: 8px 0 6px;
+  font-size: 13px;
+  color: #fff;
+}
+
+.transfer-info ul{
+  padding-left: 16px;
+  line-height: 1.6;
+}
+
+.transfer-info li{
+  margin-bottom: 3px;
+}
+
+#topNotif{
+  position: fixed;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #020617;
+  border: 1px solid #1e293b;
+  color: white;
+
+  padding: 16px 20px;   /* ⬅️ lebih besar */
+  border-radius: 14px;  /* ⬅️ lebih smooth */
+  font-size: 15px;      /* ⬅️ lebih jelas */
+
+  min-width: 280px;     /* ⬅️ lebih lebar */
+  max-width: 90%;
+
+  z-index: 999;
+  transition: 0.4s;
+  text-align: center;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,.6);
+}
+
+#topNotif.show{
+  top: 20px;
 }
