@@ -19,8 +19,8 @@
 
 <header>
   <b>Hi, Sobat Gamers</b>
-  <a href="https://ravenstore01.netlify.app" target="_blank" style="color:#fff;font-size:20px">
-    <i class="fa-solid fa-gamepad"></i>
+  <a href="https://whatsapp.com/channel/0029Vah8MuK7Noa5Ks6nEQ2q" target="_blank" style="color:#fff;font-size:20px">
+    <i class="fab fa-whatsapp footer-icon"></i>
   </a>
 </header>
 
@@ -28,6 +28,9 @@
 
 <!-- HOME -->
 <div id="home" class="section active">
+  <div class="redeem-icon">
+      <i class="fa-solid fa-trophy"></i>
+    </div>
   <h1 class="home-title">RAVENSTORE</h1>
 <p class="home-subtitle">
   Informasi, event, dan update terbaru seputar RavenStore, Mobile Legends, dan Free Fire
@@ -39,7 +42,7 @@
     <li>Login menggunakan PIN yang kamu dapatkan saat pendaftaran.</li>
     <li>Gunakan fitur Spin Poin untuk mendapatkan poin harian.</li>
     <li>Ikuti event Tebak Angka sesuai digit yang ditentukan.</li>
-    <li>Poin dapat digunakan untuk di tukarkan dengan diamond atau item lainnga di RavenStore.</li>
+    <li>Poin dapat digunakan untuk di tukarkan dengan diamond atau item lainnya di RavenStore.</li>
   </ol>
 </div>
   <div id="newsBox"></div>
@@ -92,11 +95,86 @@
 
   <b style="font-size:13px">Informasi Penting Poin:</b>
   <ul class="guide-list">
-    <li>Poin akan <b>di-reset menjadi 0 setiap hari Minggu</b>.</li>
-    <li>Sebelum reset, poin akan dipindahkan ke <b>RavenPoin</b> di akun RavenStore kamu.</li>
-    <li>Pastikan username dan email yang kamu gunakan sama dengan yang ada di akun ravenstore<b>agar poin bisa tertransfer otomatis ke akun ravenstore kamu</b>.</li>
+    <li>Pastikan username dan ID game yang kamu gunakan sama dengan yang ada di akun Free Fire kalian <b>agar penukaran poin bisa lancar</b>.</li>
   </ul>
 </div>
+</div>
+
+<!-- REDEEM -->
+<div id="redeem" class="section">
+
+  <div class="redeem-header">
+    <div class="redeem-icon">
+      <i class="fa-solid fa-coins"></i>
+    </div>
+    <h2>Redeem Poin</h2>
+    <p>Tukarkan kode untuk mendapatkan poin gratis</p>
+  </div>
+
+  <div class="redeem-card">
+    <input id="redeemInput" placeholder="Masukkan kode redeem...">
+
+    <button onclick="submitRedeem()">
+      Klaim Sekarang
+    </button>
+  </div>
+
+  <div class="redeem-info">
+    <i class="fa-solid fa-circle-info"></i>
+    Kode hanya berlaku satu kali dan memiliki batas penggunaan.
+  </div>
+  
+  <div class="live-feed">
+  <div class="live-track">
+    <div id="liveTrack1"></div>
+    <div id="liveTrack2"></div>
+  </div>
+</div>
+  
+  <div class="redeem-card">
+  <div class="redeem-header">
+    <div class="redeem-icon">
+      <i class="fa-solid fa-money-bill-transfer"></i>
+    </div>
+    <h2>Kirim Poin</h2>
+    <p>Transfer poin ke sesama users ravenstore</p>
+  </div>
+
+  <div class="input-group">
+  <input id="targetUser" placeholder="User ID tujuan (Uxxxx)">
+</div>
+
+<div class="input-wrap">
+  <input id="jumlahPoin" type="number" placeholder="Jumlah poin">
+  <button onclick="openQuick()">▼</button>
+</div>
+
+  <button onclick="kirimPoin()" style="margin-top:10px;">
+    Kirim
+  </button>
+  
+  <div style="text-align:center;margin-top:10px;">
+  <span onclick="toggleRiwayat()" 
+    style="font-size:13px;color:#00b7ff;cursor:pointer;">
+    Lihat Riwayat
+  </span>
+</div>
+<div id="transferHistory" style="display:none;margin-top:30px;"></div>
+</div>
+
+<div class="card">
+<div class="transfer-info">
+  <h4><i class="fa-solid fa-circle-info"></i> Cara Kirim Poin</h4>
+  <ul>
+    <li>Masukkan <b>User ID</b> tujuan dengan benar</li>
+    <li>Minimal kirim <b>10 poin</b></li>
+    <li>Setiap transfer dikenakan biaya <b>1 poin</b></li>
+    <li>Maksimal kirim <b>500 poin per hari</b></li>
+    <li>Poin akan langsung masuk ke akun tujuan</li>
+  </ul>
+</div>
+</div>
+
 </div>
 
 <!-- TEBAK -->
@@ -125,10 +203,7 @@
   <p style="font-size:12px; color:#94a3b8; margin-top:10px">
     ⚠️ Catatan:
     <br>
-    Poin yang diperoleh dari Tebak Angka akan dikumpulkan di akun ini.
-    Setiap <b>hari Minggu</b>, seluruh poin akan di-reset menjadi <b>0</b>
-    dan <b>dipindahkan secara manual</b> ke RavenPoin pada akun RavenStore kamu
-    di website top up game.
+    Poin yang diperoleh dari Tebak Angka akan otomatis masuk di akun ini.
   </p>
 </div>
 
@@ -149,9 +224,9 @@
     <div id="pointBig" style="font-size:34px;font-weight:800;color:#fff600;margin:6px 0">
       0
     </div>
-    <div style="font-size:12px;color:#94a3b8">
-      Reset setiap hari <b>Minggu</b>
-    </div>
+    <button onclick="goTukarPoin()" class="btn-tukar">
+    Tukar Poin
+  </button>
   </div>
 
   <!-- INFO -->
@@ -161,7 +236,7 @@
 <ul class="guide-list">
   <li>
     <b>Poin</b> adalah saldo event yang kamu dapatkan dari
-    <b>Spin Poin</b> dan <b>Tebak Angka</b>.
+    <b>pembelian</b> , <b>Spin Poin</b> dan <b>Tebak Angka</b>.
   </li>
 
   <li>
@@ -170,24 +245,14 @@
   </li>
 
   <li>
-    Setiap <b>hari Minggu</b>, seluruh poin di akun ini akan
-    <b>di-reset menjadi 0</b>.
-  </li>
-
-  <li>
-    Sebelum reset, poin akan <b>dipindahkan</b>
-    ke <b>RavenPoin</b> pada akun RavenStore kamu.
-  </li>
-
-  <li>
-    <b>Username dan Email</b> di akun ini
-    <b>WAJIB sama</b> dengan akun RavenStore
-    agar pemindahan poin tidak bermasalah.
+    <b>Username dan ID game</b> di akun ini
+    <b>WAJIB sama</b> dengan akun Game Free Fire kalian
+    agar penukaran poin tidak bermasalah.
   </li>
 
   <li>
     RavenStore <b>tidak bertanggung jawab</b> jika poin gagal
-    dipindahkan akibat kesalahan data akun.
+    ditukarkan akibat kesalahan data akun.
   </li>
 </ul>
 
@@ -201,7 +266,7 @@
   <!-- LOGOUT -->
   <div class="card">
     <button onclick="logout()" style="background:#ef4444;color:#fff">
-      LOGOUT
+      <i class="fa-solid fa-sign-out-alt"></i> LOGOUT
     </button>
   </div>
 
@@ -225,6 +290,14 @@
       <i class="fa-solid fa-lock"></i>
     </span>
   </div>
+  
+  <div id="redeemBtn" class="nav-center" onclick="goRedeem()">
+  <i class="fa-solid fa-coins"></i>
+
+  <span id="redeemLock" style="display:none;">
+    <i class="fa-solid fa-lock"></i>
+  </span>
+</div>
 
   <div class="lock" data-tab="tebak" onclick="showTab('tebak',this)">
     <i class="fa-solid fa-keyboard"></i><br>
@@ -241,6 +314,40 @@
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <script src="index.js" defer></script>
+
+<div id="confirmPopup" class="popup">
+  <div class="popup-box">
+    <h2>Konfirmasi</h2>
+    <p id="confirmText"></p>
+
+    <button onclick="prosesTransfer()">LANJUT</button>
+
+    <button onclick="closeConfirm()" 
+      style="margin-top:8px;background:#1e293b;color:white">
+      BATAL
+    </button>
+  </div>
+</div>
+
+<div id="quickPopup" class="popup">
+  <div class="popup-box">
+    <h2>Pilih Jumlah</h2>
+
+    <div class="quick-grid">
+  <button onclick="setJumlah(10)">10</button>
+  <button onclick="setJumlah(20)">20</button>
+  <button onclick="setJumlah(50)">50</button>
+  <button onclick="setJumlah(100)">100</button>
+</div>
+
+    <button onclick="closeQuick()" 
+      style="margin-top:8px;background:#1e293b;color:white">
+      BATAL
+    </button>
+  </div>
+</div>
+
+<div id="topNotif"></div>
 
 </body>
 </html>
