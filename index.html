@@ -180,7 +180,13 @@
 <!-- TEBAK -->
 <div id="tebak" class="section">
   <div class="card">
-    <b>Tebak Angka</b><br><br>
+    <div class="redeem-header">
+    <div class="redeem-icon">
+      <i class="fas fa-key"></i>
+    </div>
+    <h2>Tebak Angka</h2>
+    <p>Tebak digit angka untuk memenangkan poin</p>
+  </div>
     <div class="pin-box" id="guessBox"></div><br>
     <button id="guessBtn" onclick="submitGuess()">KIRIM</button>
   </div>
@@ -212,64 +218,139 @@
 <!-- SAYA -->
 <div id="saya" class="section">
 
-  <!-- PROFIL -->
-  <div class="card" style="text-align:center">
-    <div class="avatar" id="avatar">U</div>
-    <div id="profile" style="font-size:13px; line-height:1.7"></div>
+<!-- HEADER PROFIL -->
+<div class="card profile-top">
+
+  <div class="profile-row">
+
+  <div class="avatar" id="avatar">G</div>
+  
+  <div id="userBadge" class="user-badge"></div>
+
+  <div class="profile-info">
+    <div id="username">Guest</div>
+    <div id="userid">Silakan login</div>
   </div>
 
-  <!-- POIN -->
-  <div class="card" style="text-align:center">
-    <div style="font-size:13px; color:#94a3b8">Total Poin Kamu</div>
-    <div id="pointBig" style="font-size:34px;font-weight:800;color:#fff600;margin:6px 0">
-      0
+  <div class="profile-action">
+
+    <div id="statusAkun" class="status-badge" style="display:none;">
+      Verifikasi
     </div>
-    <button onclick="goTukarPoin()" class="btn-tukar">
-    Tukar Poin
-  </button>
+
+    <a href="login.html" id="loginBtn" class="login-btn">
+      Login
+    </a>
+
   </div>
 
-  <!-- INFO -->
-  <div class="card">
-    <h3 style="margin-top:0">Informasi Akun</h3>
+</div>
 
-<ul class="guide-list">
-  <li>
-    <b>Poin</b> adalah saldo event yang kamu dapatkan dari
-    <b>pembelian</b> , <b>Spin Poin</b> dan <b>Tebak Angka</b>.
-  </li>
+</div>
 
-  <li>
-    Poin <b>tidak dapat diuangkan</b> dan hanya digunakan sebagai
-    bonus & reward di ekosistem RavenStore.
-  </li>
 
-  <li>
-    <b>Username dan ID game</b> di akun ini
-    <b>WAJIB sama</b> dengan akun Game Free Fire kalian
-    agar penukaran poin tidak bermasalah.
-  </li>
+<!-- CARD EMAIL + POIN -->
+<div class="card point-card">
 
-  <li>
-    RavenStore <b>tidak bertanggung jawab</b> jika poin gagal
-    ditukarkan akibat kesalahan data akun.
-  </li>
+  <div class="point-email">
+
+    <div class="email-label">ID Game</div>
+    <div id="emailUser" class="email-text">Memuat...</div>
+
+  </div>
+
+  <div class="point-body">
+
+    <div class="point-title">
+  <i class="fa-solid fa-coins"></i>
+  TOTAL POIN
+</div>
+
+    <div id="pointBig">0</div>
+
+    <button onclick="goTukarPoin()" class="btn-tukar">
+      Tukar Poin
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- MENU LIST -->
+<div class="card menu-list">
+
+  <div class="menu-item" onclick="toggleMenu('detailMenu')">
+
+  <span class="menu-left">
+    <i class="fa-solid fa-user"></i>
+    Detail Akun
+  </span>
+
+  <i class="fa-solid fa-chevron-down"></i>
+
+</div>
+
+  <div id="detailMenu" class="menu-content">
+    <div id="detailContent"></div>
+  </div>
+
+
+  <div class="menu-item" onclick="toggleMenu('infoMenu')">
+
+  <span class="menu-left">
+    <i class="fa-solid fa-circle-info"></i>
+    Informasi
+  </span>
+
+  <i class="fa-solid fa-chevron-down"></i>
+
+</div>
+
+  <div id="infoMenu" class="menu-content">
+
+<ul>
+<li>Akun RavenStore digunakan untuk mengakses semua layanan yang tersedia di website ini.</li>
+
+<li>Setiap akun memiliki ID unik yang tidak dapat diubah.</li>
+
+<li>Pastikan ID game benar agar proses penukaran berjalan lancar.</li>
+
+<li>Jangan membagikan akun kepada orang lain demi menjaga keamanan akun kamu.</li>
+
 </ul>
 
-<p style="font-size:12px;color:#94a3b8;margin-top:10px">
-  💡 Tips:  
-  Pastikan data akun kamu sudah benar sebelum mengikuti event
-  agar seluruh poin bisa diproses dengan aman.
-</p>
-  </div>
+</div>
 
-  <!-- LOGOUT -->
-  <div class="card">
-    <button onclick="logout()" style="background:#ef4444;color:#fff">
-      <i class="fa-solid fa-sign-out-alt"></i> LOGOUT
-    </button>
-  </div>
+  <div class="menu-item" onclick="toggleMenu('helpMenu')">
 
+  <span class="menu-left">
+    <i class="fa-solid fa-headset"></i>
+    Pusat Bantuan
+  </span>
+
+  <i class="fa-solid fa-chevron-down"></i>
+
+</div>
+
+  <div id="helpMenu" class="menu-content">
+
+  <p>Jika mengalami kendala silakan hubungi admin RavenStore.</p>
+
+  <a href="https://wa.me/6285182501382" target="_blank" class="wa-btn">
+    <i class="fa-brands fa-whatsapp"></i> Hubungi Admin WhatsApp
+  </a>
+
+</div>
+
+</div>
+
+
+<!-- LOGOUT -->
+<div class="card">
+  <button onclick="logout()" class="logout-btn">
+    <i class="fa-solid fa-sign-out-alt"></i> LOGOUT
+  </button>
 </div>
 
 </div>
