@@ -1,5 +1,7 @@
 const API = "https://script.google.com/macros/s/AKfycbxDR0i9x5xF8YDYeWR7YE3lrjtCLocOtP2eGIQXpnQIMMHGgZn0JLJwyQ63ubUjCBPU/exec";
 
+let userStatus = "";
+
 function isLogin() {
   return !!localStorage.getItem("session_token");
 }
@@ -37,17 +39,85 @@ async function loadProfile(){
   if(!r.status) return logout();
 
   avatar.textContent = r.user.username[0].toUpperCase();
-  profile.innerHTML = `
-    <b>${r.user.username}</b>
-    <div class="profile-line"></div>
-    <span style="color:#94a3b8">${r.user.email}</span>
-    <div class="profile-line"></div>
-    <span style="font-size:12px;color:#64748b">
-      ID: ${r.user.user_id}
-    </span>
-  `;
+  
+  userStatus = r.user.status;
 
-  document.getElementById("pointBig").textContent = r.user.point;
+document.getElementById("username").textContent = r.user.username;
+
+document.getElementById("userid").textContent = r.user.user_id;
+
+document.getElementById("emailUser").textContent = r.user.email;
+
+document.getElementById("pointBig").textContent = r.user.point;
+
+document.getElementById("loginBtn").style.display = "none";
+
+document.getElementById("statusAkun").style.display = "block";
+
+const status = document.getElementById("statusAkun");
+
+if(r.user.status === "verifikasi"){
+  status.textContent = "Verifikasi";
+  status.style.background = "#16a34a";
+}else{
+  status.textContent = "Belum Verifikasi";
+  status.style.background = "#dc2626";
+}
+
+document.getElementById("detailContent").innerHTML = `
+<div class="detail-row">
+  <span class="label">Username</span>
+  <span class="colon">:</span>
+  <span class="value">${r.user.username}</span>
+</div>
+
+<div class="detail-row">
+  <span class="label">User ID</span>
+  <span class="colon">:</span>
+  <span class="value">${r.user.user_id}</span>
+</div>
+
+<div class="detail-row">
+  <span class="label">ID Game</span>
+  <span class="colon">:</span>
+  <span class="value">${r.user.email}</span>
+</div>
+
+<div class="detail-row">
+  <span class="label">Status</span>
+  <span class="colon">:</span>
+  <span class="value status-text">${r.user.status}</span>
+</div>
+`;
+
+const statusText = document.querySelector(".status-text");
+
+if(statusText){
+  if(r.user.status === "verifikasi"){
+    statusText.classList.add("status-verif");
+  }else{
+    statusText.classList.add("status-belum");
+  }
+}
+
+const badge = document.getElementById("userBadge");
+
+if(r.user.title){
+
+  if(r.user.title_icon.startsWith("fa-")){
+
+    badge.innerHTML = `<i class="fa-solid ${r.user.title_icon}"></i>`;
+
+  }else{
+
+    badge.innerHTML = `<img src="${r.user.title_icon}" width="14">`;
+
+  }
+
+  badge.style.display = "flex";
+
+}
+
 }
 
 async function loadNews(){
@@ -212,6 +282,12 @@ async function submitRedeem(){
 }
 
 function kirimPoin(){
+  
+  if(userStatus !== "verifikasi"){
+  showVerifPopup();
+  return;
+}
+
   const target = document.getElementById("targetUser").value;
   const jumlah = document.getElementById("jumlahPoin").value;
 
@@ -651,4 +727,54 @@ function runNotifQueue(){
     }, 400);
 
   }, 2500);
+}
+
+function toggleMenu(id){
+
+  const contents = document.querySelectorAll(".menu-content");
+  const headers = document.querySelectorAll(".menu-item");
+
+  contents.forEach(el=>{
+    if(el.id !== id){
+      el.style.maxHeight = null;
+    }
+  });
+
+  headers.forEach(h=>{
+    h.classList.remove("active");
+  });
+
+  const el = document.getElementById(id);
+  const header = el.previousElementSibling;
+
+  if(el.style.maxHeight){
+    el.style.maxHeight = null;
+    header.classList.remove("active");
+  }else{
+    el.style.maxHeight = el.scrollHeight + "px";
+    header.classList.add("active");
+  }
+
+}
+
+function showVerifPopup(){
+
+  const popup = document.createElement("div");
+
+  popup.innerHTML = `
+  <div class="popup-overlay">
+    <div class="popup-box">
+
+      <p>Silakan verifikasi akun<br>untuk menggunakan fitur ini</p>
+
+      <button onclick="this.closest('.popup-overlay').remove()">
+        Lanjut
+      </button>
+
+    </div>
+  </div>
+  `;
+
+  document.body.appendChild(popup);
+
 }
