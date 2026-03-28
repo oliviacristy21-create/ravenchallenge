@@ -1170,3 +1170,48 @@ nav div:nth-child(4){
 
   box-shadow:0 0 4px rgba(0,0,0,0.4);
 }
+
+/* ============================= */
+/* DESKTOP / LAPTOP VIEW */
+/* ============================= */
+@media (min-width: 768px){
+
+  body{
+    display:flex;
+    justify-content:center;
+    background:#020617;
+  }
+
+  /* batasi lebar seperti aplikasi */
+  .content{
+    width:100%;
+    max-width:420px;
+    padding:80px 20px 90px;
+  }
+
+  header{
+    left:50%;
+    transform:translateX(-50%);
+    width:100%;
+    max-width:420px;
+  }
+
+  nav{
+    left:50%;
+    transform:translateX(-50%);
+    width:100%;
+    max-width:420px;
+  }
+
+}
+
+@media (min-width: 768px){
+  body{
+    background: radial-gradient(circle at top, #0f172a, #020617);
+  }
+
+  .content{
+    border-radius:20px;
+    box-shadow:0 20px 60px rgba(0,0,0,.7);
+  }
+}
