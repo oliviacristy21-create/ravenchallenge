@@ -195,3 +195,64 @@ table th, table td{
   color:#22c55e;
   font-weight:600;
 }
+
+/* ============================= */
+/* DESKTOP / LAPTOP VIEW */
+/* ============================= */
+@media (min-width: 768px){
+
+  @media (min-width: 768px){
+
+  body{
+    background:#020617;
+  }
+
+  .content{
+    width:100%;
+    max-width:420px;
+    margin:0 auto; /* 🔥 ini kuncinya */
+    padding:80px 20px 90px;
+  }
+
+  header{
+    left:50%;
+    transform:translateX(-50%);
+    width:100%;
+    max-width:420px;
+  }
+
+  nav{
+    left:50%;
+    transform:translateX(-50%);
+    width:100%;
+    max-width:420px;
+  }
+
+}
+
+@media (min-width: 768px){
+  .grid{
+    grid-template-columns: repeat(3,1fr);
+  }
+}
+
+@media (min-width: 1024px){
+  .grid{
+    grid-template-columns: repeat(4,1fr);
+  }
+}
+
+nav{
+  bottom:0;
+}
+
+@media (min-width: 768px){
+  body{
+    background: radial-gradient(circle at top, #0f172a, #020617);
+  }
+
+  .content{
+    border-radius:20px;
+    box-shadow:0 20px 60px rgba(0,0,0,.7);
+  }
+}
