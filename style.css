@@ -1393,3 +1393,12 @@ header{
     font-size: 12px;
   }
 }
+
+#feedbackBox textarea {
+  background: #0f172a;
+  color: white;
+}
+
+#feedbackBox button {
+  width: 100%;
+}
