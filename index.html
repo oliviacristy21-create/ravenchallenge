@@ -24,10 +24,47 @@
   </a>
 </header>
 
-<div class="content">
+<div class="layout-desktop">
+  <div class="sidebar-desktop">
+
+<div class="menu-item lock" data-tab="home" onclick="showTab('home', this)">
+  HOME
+  <i class="fa-solid fa-house"></i>
+  <span class="lock-icon"><i class="fa-solid fa-lock"></i></span>
+</div>
+
+<div class="menu-item lock" data-tab="spin" onclick="showTab('spin', this)">
+  SPIN
+  <i class="fa-solid fa-circle-notch"></i>
+  <span class="lock-icon"><i class="fa-solid fa-lock"></i></span>
+</div>
+
+<div class="menu-item lock" data-tab="redeem" onclick="showTab('redeem', this)">
+  REEDEM
+  <i class="fa-solid fa-coins"></i>
+  <span class="lock-icon"><i class="fa-solid fa-lock"></i></span>
+</div>
+
+<div class="menu-item lock" data-tab="tebak" onclick="showTab('tebak', this)">
+  TEBAK
+  <i class="fa-solid fa-keyboard"></i>
+  <span class="lock-icon"><i class="fa-solid fa-lock"></i></span>
+</div>
+
+<div class="menu-item" data-tab="saya" onclick="showTab('saya', this)">
+  SAYA
+  <i class="fa-solid fa-user"></i>
+</div>
+
+</div>
+
+  <div class="content">
 
 <!-- HOME -->
-<div id="home" class="section active">
+<div id="home" class="section split active">
+
+  <div class="left">
+
   <div class="redeem-icon">
       <i class="fa-solid fa-trophy"></i>
     </div>
@@ -45,11 +82,19 @@
     <li>Poin dapat digunakan untuk di tukarkan dengan diamond atau item lainnya di RavenStore.</li>
   </ol>
 </div>
+
+</div>
+
+<div class="right">
   <div id="newsBox"></div>
+</div>
 </div>
 
 <!-- SPIN -->
-<div id="spin" class="section">
+<div id="spin" class="section split">
+
+  <div class="left">
+
   <div class="card1 spin-card">
 
   <div class="wheel-wrapper">
@@ -77,6 +122,11 @@
   <p class="spin-note">Spin gratis 1x setiap hari</p>
 
 </div>
+
+</div>
+
+<div class="right">
+
 <div class="card">
   <h3>Petunjuk & Informasi Spin Poin</h3>
 
@@ -100,8 +150,12 @@
 </div>
 </div>
 
+</div>
+
 <!-- REDEEM -->
-<div id="redeem" class="section">
+<div id="redeem" class="section split">
+
+  <div class="left">
 
   <div class="redeem-header">
     <div class="redeem-icon">
@@ -130,6 +184,10 @@
     <div id="liveTrack2"></div>
   </div>
 </div>
+
+</div>
+
+<div class="right">
   
   <div class="redeem-card">
   <div class="redeem-header">
@@ -177,8 +235,13 @@
 
 </div>
 
+</div>
+
 <!-- TEBAK -->
-<div id="tebak" class="section">
+<div id="tebak" class="section split">
+
+  <div class="left">
+
   <div class="card">
     <div class="redeem-header">
     <div class="redeem-icon">
@@ -190,6 +253,11 @@
     <div class="pin-box" id="guessBox"></div><br>
     <button id="guessBtn" onclick="submitGuess()">KIRIM</button>
   </div>
+
+  </div>
+
+  <div class="right">
+
   <div class="card">
   <h3>Petunjuk Tebak Angka</h3>
 
@@ -214,9 +282,12 @@
 </div>
 
 </div>
+</div>
 
 <!-- SAYA -->
-<div id="saya" class="section">
+<div id="saya" class="section split">
+
+  <div class="left">
 
 <!-- HEADER PROFIL -->
 <div class="card profile-top">
@@ -276,6 +347,9 @@
 
 </div>
 
+</div>
+
+<div class="right">
 
 <!-- MENU LIST -->
 <div class="card menu-list">
@@ -354,6 +428,9 @@
 </div>
 
 </div>
+  </div>
+    </div>
+      </div>
 
 <nav>
   <div class="lock" data-tab="home" onclick="showTab('home',this)">
