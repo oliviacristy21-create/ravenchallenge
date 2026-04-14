@@ -1171,47 +1171,225 @@ nav div:nth-child(4){
   box-shadow:0 0 4px rgba(0,0,0,0.4);
 }
 
-/* ============================= */
-/* DESKTOP / LAPTOP VIEW */
-/* ============================= */
-@media (min-width: 768px){
+.sidebar-desktop{
+  display: none;
+}
 
-  body{
-    display:flex;
-    justify-content:center;
-    background:#020617;
+/* ========================= */
+/* LAYOUT DESKTOP */
+/* ========================= */
+@media (min-width: 1024px){
+
+/* HEADER FULL LEBAR */
+header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 97%;
+  z-index: 1000;
+}
+
+  .layout-desktop{
+    display: flex;
   }
 
-  /* batasi lebar seperti aplikasi */
+  /* SIDEBAR */
+  .sidebar-desktop{
+    width: 200px;
+    height: 100vh;
+    position: fixed;
+    top: 53px;
+    left: 0;
+
+    background: #0b1220;
+    border-right: 1px solid #1e293b;
+
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 10px;
+  }
+
+  /* MENU ITEM */
+  .sidebar-desktop .menu-item{
+    color: #fff;
+    font-size: 14px;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  /* ACTIVE */
+  .sidebar-desktop .menu-item.active{
+    color: #facc15;
+  }
+
+  /* CONTENT GESER */
   .content{
-    width:100%;
-    max-width:420px;
-    padding:80px 20px 90px;
+    margin-left: 240px; /* ⬅️ SESUAI LEBAR SIDEBAR */
+    padding: 20px;
+    width: 100%;
+    margin-top: 60px;
   }
 
-  header{
-    left:50%;
-    transform:translateX(-50%);
-    width:100%;
-    max-width:420px;
-  }
-
+  /* NAV BAWAH HILANG */
   nav{
-    left:50%;
-    transform:translateX(-50%);
-    width:100%;
-    max-width:420px;
+    display: none;
   }
 
 }
 
-@media (min-width: 768px){
-  body{
-    background: radial-gradient(circle at top, #0f172a, #020617);
+/* ========================= */
+/* GRID ISI MENU LAPTOP */
+/* ========================= */
+@media (min-width: 1024px){
+
+  .section{
+    display: none;
   }
 
-  .content{
-    border-radius:20px;
-    box-shadow:0 20px 60px rgba(0,0,0,.7);
+  .section.active{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 1000px;
+  }
+
+}
+
+@media (min-width: 1024px){
+
+  #saya.section.active{
+    grid-template-columns: 1.3fr 0.7fr;
+  }
+
+}
+
+@media (min-width: 1024px){
+
+  .card,
+  .card1,
+  .redeem-card{
+    padding: 16px;
+  }
+
+  h1{
+    font-size: 22px;
+  }
+
+  p{
+    font-size: 13px;
+  }
+
+}
+
+@media (min-width: 1024px){
+
+  #redeem .live-feed{
+    width: 100%;
+    max-width: 400px;
+    overflow: hidden;
+  }
+
+  #redeem .live-track{
+    width: 3000%;
+  }
+
+}
+
+@media (min-width: 1024px){
+
+  /* SIDEBAR BASE */
+  .sidebar-desktop .menu-item{
+    padding: 14px 16px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    color: #cbd5f5;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  /* HOVER EFFECT */
+  .sidebar-desktop .menu-item:hover{
+    background: rgba(255,255,255,0.05);
+    transform: translateX(5px);
+    color: #fff;
+  }
+
+  /* ACTIVE (KUNING) */
+  .sidebar-desktop .menu-item.active{
+    background: linear-gradient(135deg, #FFD700, #FFC300);
+    color: #000;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+    transform: translateX(6px);
+  }
+
+  .sidebar-desktop .menu-item i {
+    width: 18px;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  .sidebar-desktop .menu-item.active i {
+    color: #000;
+  }
+
+}
+
+.sidebar-desktop .menu-item.active{
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow{
+  from{
+    box-shadow: 0 0 5px rgba(255,215,0,0.4);
+  }
+  to{
+    box-shadow: 0 0 15px rgba(255,215,0,0.8);
+  }
+}
+
+@media (min-width: 1024px){
+
+  .section.active{
+    position: relative;
+  }
+
+  .section.active::after{
+    content: "";
+    position: absolute;
+
+    top: -25px;
+    bottom: -25px;
+
+    left: 50%;
+    width: 1px;
+
+    background: rgba(255,255,255,0.15);
+  }
+
+  #saya.section.active::after{
+  left: 65%; /* sesuaikan */
+  }
+
+  #redeem.section.active::after{
+  left: 50%; /* sesuaikan */
+  }
+
+}
+
+@media (min-width: 1024px){
+
+  .sidebar-desktop .lock{
+    opacity: 0.6;
+    position: relative;
+  }
+
+  .sidebar-desktop .lock-icon{
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
   }
 }
