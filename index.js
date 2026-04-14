@@ -125,13 +125,24 @@ const badge = document.getElementById("userBadge");
 
 if(r.user.title){
 
+  loadFeedbackFeature();
+
   if(r.user.title_icon.startsWith("fa-")){
 
-    badge.innerHTML = `<i class="fa-solid ${r.user.title_icon}"></i>`;
+    badge.innerHTML = `
+  <i class="fa-solid ${r.user.title_icon}" 
+     style="cursor:pointer"
+     onclick="showTitleInfo('${r.user.title}')">
+  </i>
+`;
 
   }else{
 
-    badge.innerHTML = `<img src="${r.user.title_icon}" width="14">`;
+    badge.innerHTML = `
+  <img src="${r.user.title_icon}" width="14"
+       style="cursor:pointer"
+       onclick="showTitleInfo('${r.user.title}')">
+`;
 
   }
 
@@ -832,4 +843,93 @@ function showVerifPopup(){
 
   document.body.appendChild(popup);
 
+}
+
+function showTitleInfo(title){
+
+  const data = titleInfo[title];
+
+  if(!data){
+    showPopup("INFO", "Title tidak ditemukan");
+    return;
+  }
+
+  showPopup(data.title, data.desc);
+}
+
+const titleInfo = {
+  "Founder": {
+    title: "Founder",
+    desc: "Pemilik resmi RavenStore. Memiliki akses penuh ke semua sistem."
+  },
+  "Staff": {
+    title: "Staff",
+    desc: "Tim yang membantu mengelola dan menjaga RavenStore."
+  },
+  "Contributor": {
+    title: "Contributor",
+    desc: "User yang ikut berkontribusi dalam pengembangan RavenStore."
+  },
+  "Supporter": {
+    title: "Supporter",
+    desc: "User yang mendukung perkembangan RavenStore."
+  },
+  "VIP Member": {
+    title: "VIP Member",
+    desc: "Member spesial dengan aktivitas tinggi dan benefit khusus."
+  },
+  "Top player": {
+    title: "Top Player",
+    desc: "User yang sering memenangkan event dan challenge."
+  }
+};
+
+async function submitFeedback(){
+  const text = document.getElementById("feedbackText").value;
+  const token = localStorage.getItem("session_token");
+
+  if(!text){
+    showPopup("ERROR","Isi feedback dulu");
+    return;
+  }
+
+  const res = await fetch(API,{
+    method:"POST",
+    body:new URLSearchParams({
+      action:"sendFeedback",
+      token: token,
+      pesan: text
+    })
+  });
+
+  const data = await res.json();
+
+  if(data.status){
+    showPopup("BERHASIL","Feedback terkirim!");
+    document.getElementById("feedbackText").value = "";
+  }else{
+    showPopup("GAGAL", data.message);
+  }
+}
+
+function loadFeedbackFeature(){
+  document.getElementById("feedbackBox").innerHTML = `
+    <div class="card">
+      <h3>💬 Kirim Feedback</h3>
+
+      <textarea id="feedbackText" placeholder="Tulis saran atau ide kamu..." style="
+        width:100%;
+        height:80px;
+        margin-top:10px;
+        padding:10px;
+        border-radius:8px;
+        border:none;
+        outline:none;
+      "></textarea>
+
+      <button onclick="submitFeedback()" style="margin-top:10px">
+        KIRIM
+      </button>
+    </div>
+  `;
 }
