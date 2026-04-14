@@ -6,11 +6,32 @@ function isLogin() {
   return !!localStorage.getItem("session_token");
 }
 
-function showTab(id,el){
-  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-  document.querySelectorAll('nav div').forEach(n=>n.classList.remove('active'));
+function showTab(id, el){
+
+  // hide semua section
+  document.querySelectorAll('.section')
+    .forEach(s => s.classList.remove('active'));
+
+  // tampilkan yang dipilih
   document.getElementById(id).classList.add('active');
-  el.classList.add('active');
+
+  // =====================
+  // NAV HP ACTIVE
+  // =====================
+  document.querySelectorAll('nav div')
+    .forEach(n => n.classList.remove('active'));
+
+  const navTarget = document.querySelector(`nav div[data-tab="${id}"]`);
+  if(navTarget) navTarget.classList.add('active');
+
+  // =====================
+  // SIDEBAR ACTIVE (INI YANG PENTING)
+  // =====================
+  document.querySelectorAll('.sidebar-desktop .menu-item')
+    .forEach(item => item.classList.remove('active'));
+
+  const sideTarget = document.querySelector(`.sidebar-desktop .menu-item[data-tab="${id}"]`);
+  if(sideTarget) sideTarget.classList.add('active');
 }
 
 async function loadProfile(){
@@ -534,28 +555,62 @@ function showPopup(title,text){
 
 function lockMenuIfNotLogin() {
   if (!isLogin()) {
-    // kunci menu
+
+    // =====================
+    // LOCK NAV HP
+    // =====================
     document.querySelectorAll("nav div.lock").forEach(el => {
       el.style.pointerEvents = "none";
       el.style.opacity = "0.45";
+
       const icon = el.querySelector(".lock-icon");
       if (icon) icon.style.display = "block";
     });
 
-    // paksa ke tab saya
+    // =====================
+    // LOCK SIDEBAR DESKTOP
+    // =====================
+    document.querySelectorAll(".sidebar-desktop .lock").forEach(el => {
+      el.style.pointerEvents = "none";
+      el.style.opacity = "0.45";
+
+      const icon = el.querySelector(".lock-icon");
+      if (icon) icon.style.display = "inline-block";
+    });
+
+    // =====================
+    // PAKSA KE MENU SAYA
+    // =====================
     document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
     document.getElementById("saya").classList.add("active");
 
     document.querySelectorAll("nav div").forEach(n => n.classList.remove("active"));
     document.querySelector("nav div[data-tab='saya']").classList.add("active");
 
+    document.querySelectorAll(".sidebar-desktop .menu-item")
+      .forEach(n => n.classList.remove("active"));
+
+    document.querySelector(".sidebar-desktop .menu-item[data-tab='saya']")
+      ?.classList.add("active");
+
     return;
   }
 
-  // jika SUDAH login → buka kunci
+  // =====================
+  // JIKA SUDAH LOGIN
+  // =====================
   document.querySelectorAll("nav div.lock").forEach(el => {
     el.style.pointerEvents = "auto";
     el.style.opacity = "1";
+
+    const icon = el.querySelector(".lock-icon");
+    if (icon) icon.style.display = "none";
+  });
+
+  document.querySelectorAll(".sidebar-desktop .lock").forEach(el => {
+    el.style.pointerEvents = "auto";
+    el.style.opacity = "1";
+
     const icon = el.querySelector(".lock-icon");
     if (icon) icon.style.display = "none";
   });
