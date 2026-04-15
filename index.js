@@ -885,49 +885,72 @@ const titleInfo = {
 };
 
 async function submitFeedback(){
+
   const text = document.getElementById("feedbackText").value;
   const token = localStorage.getItem("session_token");
+  const btn = document.querySelector("#feedbackBox button");
 
   if(!text){
     showPopup("ERROR","Isi feedback dulu");
     return;
   }
 
-  const res = await fetch(API,{
-    method:"POST",
-    body:new URLSearchParams({
-      action:"sendFeedback",
-      token: token,
-      pesan: text
-    })
-  });
+  // 🔥 DISABLE BUTTON + SPINNER
+  const oldText = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
 
-  const data = await res.json();
+  // 🔥 POPUP LOADING
+  document.getElementById("spinTitle").innerText = "MENGIRIM";
+  document.getElementById("spinText").innerText = "Feedback sedang dikirim...";
+  document.getElementById("spinPopup").style.display = "flex";
 
-  if(data.status){
-    showPopup("BERHASIL","Feedback terkirim!");
-    document.getElementById("feedbackText").value = "";
-  }else{
-    showPopup("GAGAL", data.message);
+  try{
+
+    const res = await fetch(API,{
+      method:"POST",
+      body:new URLSearchParams({
+        action:"sendFeedback",
+        token: token,
+        pesan: text
+      })
+    });
+
+    const data = await res.json();
+
+    // 🔥 TUTUP LOADING
+    document.getElementById("spinPopup").style.display = "none";
+
+    // 🔥 BALIKIN BUTTON
+    btn.disabled = false;
+    btn.innerHTML = oldText;
+
+    if(data.status){
+      showPopup("BERHASIL","Feedback terkirim!");
+      document.getElementById("feedbackText").value = "";
+    }else{
+      showPopup("GAGAL", data.message);
+    }
+
+  }catch(err){
+
+    document.getElementById("spinPopup").style.display = "none";
+    btn.disabled = false;
+    btn.innerHTML = oldText;
+
+    showPopup("ERROR","Server error");
+    console.error(err);
   }
 }
 
 function loadFeedbackFeature(){
   document.getElementById("feedbackBox").innerHTML = `
-    <div class="card">
+    <div class="card feedback-box">
       <h3>💬 Kirim Feedback</h3>
 
-      <textarea id="feedbackText" placeholder="Tulis saran atau ide kamu..." style="
-        width:100%;
-        height:80px;
-        margin-top:10px;
-        padding:10px;
-        border-radius:8px;
-        border:none;
-        outline:none;
-      "></textarea>
+      <textarea id="feedbackText" placeholder="Tulis saran atau ide kamu..."></textarea>
 
-      <button onclick="submitFeedback()" style="margin-top:10px">
+      <button onclick="submitFeedback()">
         KIRIM
       </button>
     </div>
