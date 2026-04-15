@@ -1394,11 +1394,32 @@ header{
   }
 }
 
-#feedbackBox textarea {
-  background: #0f172a;
-  color: white;
+.feedback-box{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
 }
 
-#feedbackBox button {
-  width: 100%;
+.feedback-box textarea{
+  width:95%;
+  height:90px;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  outline:none;
+  background:#1e293b;
+  color:white;
+  font-size:13px;
+  resize:none;
+}
+
+.feedback-box button{
+  width:100%;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  background:#facc15;
+  color:black;
+  font-weight:600;
+  cursor:pointer;
 }
