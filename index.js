@@ -79,6 +79,20 @@ document.getElementById("referralCode").textContent = r.user.referral_code;
 
 document.getElementById("referralCount").textContent = r.user.referral_count;
 
+const count = r.user.referral_count || 0;
+const max = 5;
+
+// update text
+document.getElementById("refProgressText").textContent =
+  `Progress: ${count} / ${max}`;
+
+// hitung persen
+let percent = (count / max) * 100;
+if(percent > 100) percent = 100;
+
+// update bar
+document.getElementById("refBar").style.width = percent + "%";
+
 const status = document.getElementById("statusAkun");
 
 if(r.user.status === "verifikasi"){
