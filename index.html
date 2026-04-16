@@ -319,58 +319,6 @@
 
 </div>
 
-
-<!-- CARD EMAIL + POIN -->
-<div class="card point-card">
-
-  <div class="point-email">
-
-    <div class="email-label">ID Game</div>
-    <div id="emailUser" class="email-text">Memuat...</div>
-
-  </div>
-
-  <div class="point-body">
-
-    <div class="point-title">
-  <i class="fa-solid fa-coins"></i>
-  TOTAL POIN
-</div>
-
-    <div id="pointBig">0</div>
-
-    <button onclick="goTukarPoin()" class="btn-tukar">
-      Tukar Poin
-    </button>
-
-  </div>
-
-</div>
-
-<div class="card">
-  <h3>Referral Kamu</h3>
-
-  <div style="margin-bottom:8px;">
-    Kode: <b id="referralCode">-</b>
-  </div>
-
-  <div>Undangan: <b id="referralCount">0</b></div>
-
-  <!-- 🔥 TAMBAHKAN INI -->
-  <div style="margin-top:12px;display:flex;gap:8px;">
-    <button onclick="copyReferral()" style="flex:1;">Copy</button>
-    <button onclick="shareReferral()" style="flex:1;">Share</button>
-  </div>
-
-  <p style="font-size:12px;color:#94a3b8;margin-top:10px">
-    Ajak teman & dapatkan poin + title Supporter
-  </p>
-</div>
-
-</div>
-
-<div class="right">
-
 <!-- MENU LIST -->
 <div class="card menu-list">
 
@@ -437,6 +385,67 @@
 
 </div>
 
+</div>
+
+<!-- CARD EMAIL + POIN -->
+<div class="card point-card">
+
+  <div class="point-email">
+
+    <div class="email-label">ID Game</div>
+    <div id="emailUser" class="email-text">Memuat...</div>
+
+  </div>
+
+  <div class="point-body">
+
+    <div class="point-title">
+  <i class="fa-solid fa-coins"></i>
+  TOTAL POIN
+</div>
+
+    <div id="pointBig">0</div>
+
+    <button onclick="goTukarPoin()" class="btn-tukar">
+      Tukar Poin
+    </button>
+
+  </div>
+
+</div>
+
+</div>
+
+<div class="right">
+
+  <div class="card">
+  <h3>Referral Kamu</h3>
+
+  <div style="margin-bottom:8px;">
+    Kode: <b id="referralCode">-</b>
+  </div>
+
+  <div>Undangan: <b id="referralCount">0</b></div>
+
+  <!-- 🔥 PROGRESS TEXT -->
+  <div id="refProgressText" style="font-size:12px;margin-top:6px;color:#94a3b8">
+    Progress: 0 / 5
+  </div>
+
+  <!-- 🔥 PROGRESS BAR -->
+  <div style="background:#1e293b;height:8px;border-radius:6px;margin-top:6px;overflow:hidden;">
+    <div id="refBar" style="height:100%;width:0%;background:#22c55e;"></div>
+  </div>
+
+  <!-- BUTTON -->
+  <div style="margin-top:12px;display:flex;gap:8px;">
+    <button onclick="copyReferral()" style="flex:1;">📋 Copy</button>
+    <button onclick="shareReferral()" style="flex:1;">📤 Share</button>
+  </div>
+
+  <p style="font-size:12px;color:#94a3b8;margin-top:10px">
+    Ajak teman & dapatkan poin + title Supporter
+  </p>
 </div>
 
 <div id="feedbackBox"></div>
