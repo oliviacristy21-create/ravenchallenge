@@ -24,6 +24,13 @@ document.addEventListener("DOMContentLoaded", () => {
     if(type==="err") setTimeout(()=>overlay.style.display="none",1800);
   }
 
+  let deviceId = localStorage.getItem("device_id");
+
+  if(!deviceId){
+  deviceId = "DEV-" + Math.random().toString(36).substr(2,9);
+  localStorage.setItem("device_id", deviceId);
+  }
+
   window.register = async function(){
     if(!username.value || !email.value || !agree.checked){
       modal("err","Lengkapi data & centang persetujuan");
@@ -38,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
       form.append("username", username.value);
       form.append("email", email.value);
       form.append("referral", referral.value);
+      form.append("device_id", deviceId);
 
       // 🔥 AMBIL REFERRAL DARI URL
       const urlParams = new URLSearchParams(window.location.search);
