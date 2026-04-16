@@ -75,6 +75,10 @@ document.getElementById("loginBtn").style.display = "none";
 
 document.getElementById("statusAkun").style.display = "block";
 
+document.getElementById("referralCode").textContent = r.user.referral_code;
+
+document.getElementById("referralCount").textContent = r.user.referral_count;
+
 const status = document.getElementById("statusAkun");
 
 if(r.user.status === "verifikasi"){
@@ -955,4 +959,32 @@ function loadFeedbackFeature(){
       </button>
     </div>
   `;
+}
+
+function copyReferral(){
+  const code = document.getElementById("referralCode").textContent;
+
+  if(!code || code === "-"){
+    showPopup("ERROR","Kode belum tersedia");
+    return;
+  }
+
+  navigator.clipboard.writeText(code);
+
+  showPopup("BERHASIL","Kode referral disalin!");
+}
+
+function shareReferral(){
+  const code = document.getElementById("referralCode").textContent;
+
+  if(!code || code === "-"){
+    showPopup("ERROR","Kode belum tersedia");
+    return;
+  }
+
+  const link = `https://raventstore.netlify.app/daftar.html?ref=${code}`;
+
+  const text = `🔥 Daftar di RavenStore pakai kode referral aku: ${code}\n\n👉 ${link}`;
+
+  window.open(`https://wa.me/?text=${encodeURIComponent(text)}`);
 }
