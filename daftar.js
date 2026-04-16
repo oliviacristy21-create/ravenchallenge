@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const agree = document.getElementById("agree");
   const pinBox = document.getElementById("pinBox");
   const btnNext = document.getElementById("btnNext");
+  const referral = document.getElementById("referral");
 
   if (!overlay || !username) return; // ⬅️ PENYELAMAT
 
@@ -36,6 +37,15 @@ document.addEventListener("DOMContentLoaded", () => {
       form.append("action","register");
       form.append("username", username.value);
       form.append("email", email.value);
+      form.append("referral", referral.value);
+
+      // 🔥 AMBIL REFERRAL DARI URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const ref = urlParams.get("ref");
+
+      if(ref){
+      form.append("referral", ref);
+    }
 
       const res = await fetch(API,{ method:"POST", body: form });
       const r = await res.json();
