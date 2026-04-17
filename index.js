@@ -657,6 +657,8 @@ document.addEventListener("DOMContentLoaded", () => {
   lockRedeemIfNotLogin();
   checkTransferNotif();
   startLiveFeed();
+  loadNotifications();
+  loadNotifIcon();
 
   if (isLogin()) {
     showTab("home", document.querySelector("nav div[data-tab='home']"));
@@ -901,6 +903,147 @@ const titleInfo = {
     desc: "User yang sering memenangkan event dan challenge."
   }
 };
+
+async function loadNotifications(){
+  const token = localStorage.getItem("session_token");
+
+  const res = await fetch(API,{
+    method:"POST",
+    body:new URLSearchParams({
+      action:"getNotifications",
+      token: token
+    })
+  });
+
+  const data = await res.json();
+
+  const box = document.getElementById("notifBox");
+
+  if(!data.status || data.data.length === 0){
+    box.innerHTML = "<i>Tidak ada pemberitahuan</i>";
+    return;
+  }
+
+  let html = "";
+
+  data.data.forEach(n => {
+
+    let color = "#38bdf8";
+
+    if(n.type === "warning") color = "#f87171";
+    if(n.type === "maintenance") color = "#facc15";
+
+    html += `
+      <div class="card" style="border-left:4px solid ${color}">
+        <b>${n.title}</b>
+        <div style="font-size:13px;margin-top:4px">
+          ${n.message}
+        </div>
+      </div>
+    `;
+  });
+
+  box.innerHTML = html;
+}
+
+async function loadNotifIcon(){
+  const token = localStorage.getItem("session_token");
+
+  const res = await fetch(API,{
+    method:"POST",
+    body:new URLSearchParams({
+      action:"getNotifications",
+      token: token
+    })
+  });
+
+  const data = await res.json();
+
+  const dot = document.getElementById("notifDot");
+
+  if(data.unread){
+    dot.style.display = "block";
+  }else{
+    dot.style.display = "none";
+  }
+}
+
+async function openNotifPopup(){
+  document.getElementById("notifPopup").style.display = "flex";
+
+  const token = localStorage.getItem("session_token");
+
+  const res = await fetch(API,{
+    method:"POST",
+    body:new URLSearchParams({
+      action:"getNotifications",
+      token: token
+    })
+  });
+
+  const data = await res.json();
+  const box = document.getElementById("notifList");
+
+  let html = "";
+
+  data.data.forEach(n => {
+
+    let color = "#38bdf8";
+    if(n.type === "warning") color = "#f87171";
+
+    html += `
+      <div style="
+        border-left:4px solid ${color};
+        padding:8px;
+        margin-bottom:8px;
+        opacity:${n.isRead ? "0.5" : "1"};
+      ">
+        <b>${n.title}</b>
+        <div style="font-size:13px">${n.message}</div>
+      </div>
+    `;
+  });
+
+  box.innerHTML = html;
+}
+
+async function markNotifRead(){
+  const token = localStorage.getItem("session_token");
+
+  await fetch(API,{
+    method:"POST",
+    body:new URLSearchParams({
+      action:"markNotifRead",
+      token: token
+    })
+  });
+
+  document.getElementById("notifPopup").style.display = "none";
+
+  loadNotifIcon(); // 🔴 hilang
+}
+
+function closeNotifPopup(){
+  document.getElementById("notifPopup").style.display = "none";
+}
+
+function renderNotif(data){
+  const box = document.getElementById("notifList");
+  box.innerHTML = "";
+
+  if(data.length === 0){
+    box.innerHTML = "<i>Tidak ada pemberitahuan</i>";
+    return;
+  }
+
+  data.forEach(n => {
+    box.innerHTML += `
+      <div class="notif-item">
+        ${n.pesan}
+      </div>
+    `;
+  });
+}
 
 async function submitFeedback(){
 
