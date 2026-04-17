@@ -1423,3 +1423,173 @@ header{
   font-weight:600;
   cursor:pointer;
 }
+
+/* OVERLAY */
+.notif-overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+  z-index:9999;
+  justify-content:center;
+  align-items:center;
+}
+
+/* BOX */
+.notif-box{
+  width:320px;
+  max-height:400px;
+  background:#0f172a;
+  border-radius:12px;
+  padding:16px;
+
+  display:flex;
+  flex-direction:column;
+}
+
+/* LIST (SCROLL) */
+.notif-list{
+  max-height:260px;
+  overflow-y:auto;
+  margin-top:10px;
+}
+
+/* ITEM */
+.notif-item{
+  font-size:13px;
+  padding:8px;
+  border-bottom:1px solid #1e293b;
+}
+
+/* ACTION BUTTON AREA */
+.notif-actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:6px;
+  margin-top:auto;
+}
+
+/* BUTTON KECIL */
+.btn-read,
+.btn-close{
+  font-size:11px;
+  padding:4px 8px;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+/* WARNA */
+.btn-read{
+  background:#16a34a;
+  color:white;
+}
+
+.btn-close{
+  background:#1e293b;
+  color:#94a3b8;
+}
+
+/* OVERLAY */
+.notif-overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+  z-index:9999;
+  justify-content:center;
+  align-items:center;
+}
+
+/* BOX */
+.notif-box{
+  width:320px;
+  max-height:400px;
+  background:#0f172a;
+  border-radius:12px;
+  padding:16px;
+
+  display:flex;
+  flex-direction:column;
+}
+
+/* LIST (SCROLL) */
+.notif-list{
+  max-height:260px;
+  overflow-y:auto;
+  margin-top:10px;
+}
+
+/* ITEM */
+.notif-item{
+  font-size:13px;
+  padding:8px;
+  border-bottom:1px solid #1e293b;
+}
+
+/* ACTION BUTTON AREA */
+.notif-actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:6px;
+  margin-top:auto;
+}
+
+/* BUTTON KECIL */
+.btn-read,
+.btn-close{
+  font-size:11px;
+  padding:4px 8px;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+/* WARNA */
+.btn-read{
+  background:#16a34a;
+  color:white;
+}
+
+.btn-close{
+  background:#1e293b;
+  color:#94a3b8;
+}
+
+.notiff{
+  position:absolute;
+
+  right:59px;
+  bottom:59px;
+  left:320px;
+
+  width:18px;
+  height:18px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:10px;
+  color:#ffffff;
+}
+
+@media (min-width: 1024px){
+.notiff-desk{
+  position:absolute;
+
+  right:59px;
+  bottom:59px;
+  left:475px;
+
+  width:18px;
+  height:18px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:10px;
+  color:#ffffff;
+}
+}
