@@ -1438,7 +1438,7 @@ header{
 /* BOX */
 .notif-box{
   width:320px;
-  max-height:400px;
+  max-height:320px;
   background:#0f172a;
   border-radius:12px;
   padding:16px;
