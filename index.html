@@ -13,6 +13,23 @@
 
 </head>
 <body>
+<div id="notifPopup" class="notif-overlay">
+  <div class="notif-box">
+
+    <h3>Pemberitahuan ✔</h3>
+
+    <div id="notifList" class="notif-list">
+      Memuat...
+    </div>
+
+    <div class="notif-actions">
+      <button class="btn-read" onclick="markNotifRead()">tandai sudah dibaca</button>
+      <button class="btn-close" onclick="closeNotifPopup()">✕</button>
+    </div>
+
+  </div>
+</div>
+
   <div id="spinPopup" class="popup">
   <div class="popup-box">
     <h2 id="spinTitle"></h2>
@@ -23,6 +40,7 @@
 
 <header>
   <b>Hi, Sobat Gamers</b>
+
   <a href="https://whatsapp.com/channel/0029Vah8MuK7Noa5Ks6nEQ2q" target="_blank" style="color:#fff;font-size:20px">
     <i class="fab fa-whatsapp footer-icon"></i>
   </a>
@@ -309,7 +327,23 @@
 
   <div class="profile-action">
 
-    <div id="statusAkun" class="status-badge" style="display:none;">
+    <div id="notifIcon" onclick="openNotifPopup()" class="notiff notiff-desk">
+  <i class="fa-solid fa-envelope" style="font-size:15px"></i>
+
+  <!-- 🔴 titik merah -->
+  <span id="notifDot" style="
+    display:none;
+    position:absolute;
+    top:-3px;
+    right:-3px;
+    width:8px;
+    height:8px;
+    background:red;
+    border-radius:50%;
+  "></span>
+</div>
+
+<div id="statusAkun" class="status-badge" style="display:none;">
       Verifikasi
     </div>
 
