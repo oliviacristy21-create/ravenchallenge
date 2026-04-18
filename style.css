@@ -1492,11 +1492,11 @@ header{
 
 /* BOX */
 .notif-box{
-  width:260px;
+  width:70%;
   max-height:320px;
   background:#0f172a;
   border-radius:12px;
-  padding:12px;
+  padding:16px;
 
   display:flex;
   flex-direction:column;
