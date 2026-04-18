@@ -1436,18 +1436,6 @@ header{
   align-items:center;
 }
 
-/* BOX */
-.notif-box{
-  width:260px;
-  max-height:320px;
-  background:#0f172a;
-  border-radius:12px;
-  padding:12px;
-
-  display:flex;
-  flex-direction:column;
-}
-
 /* LIST (SCROLL) */
 .notif-list{
   max-height:260px;
@@ -1504,11 +1492,11 @@ header{
 
 /* BOX */
 .notif-box{
-  width:320px;
-  max-height:400px;
+  width:260px;
+  max-height:320px;
   background:#0f172a;
   border-radius:12px;
-  padding:16px;
+  padding:12px;
 
   display:flex;
   flex-direction:column;
