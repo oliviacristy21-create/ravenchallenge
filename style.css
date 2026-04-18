@@ -526,6 +526,20 @@ nav div.lock {
 }
 
 .redeem-icon{
+  width:70px;
+  height:70px;
+  margin:0 auto 10px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#f59e0b,#facc15); /* ⬅️ INI PENYEBAB */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  color:#000;
+  box-shadow:0 6px 20px rgba(250,204,21,0.5);
+}
+
+.logo-icon{
   width:auto;
   height:auto;
   margin:0 auto 10px;
