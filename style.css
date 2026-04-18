@@ -1602,3 +1602,57 @@ header{
 
   margin-top:-20px; /* jarak dari header */
 }
+
+/* ===== PREMIUM WHEEL STYLE ===== */
+
+.premium-card{
+text-align:center;
+padding:14px;
+background:#020617 url(https://i.ibb.co.com/nMxBT9tX/c071c2581fd9fbfcaef577d1cbe8d642.jpg);
+background-size:100%;
+}
+
+.premium-wheel-box{
+position:relative;
+display:flex;
+justify-content:center;
+align-items:center;
+margin:10px 0;
+}
+
+#premiumWheelImg{
+width:280px;
+max-width:100%;
+display:block;
+border-radius:50%;
+transition:transform 5s cubic-bezier(.17,.67,.83,.67);
+}
+
+.premium-pointer{
+position:absolute;
+top:-10px;
+left:45%;
+transform: rotate(180deg);
+width:0;
+height:0;
+border-left:18px solid transparent;
+border-right:18px solid transparent;
+border-bottom:28px solid gold;
+z-index:5;
+}
+
+.premium-spin-btn{
+display:block;
+margin:20px auto;
+padding:12px 28px;
+font-size:14px;
+font-weight:bold;
+background:#ae00ff;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+.premium-spin-btn:active{
+transform:scale(0.95);
+}
