@@ -127,8 +127,8 @@ button{
   text-align: center;
   font-size: 26px;
   font-weight: 700;
-  margin-top: 10px;
-  margin-bottom: 5px;
+  margin-top:0;
+  margin-bottom:6px;
 }
 
 .home-subtitle {
@@ -526,17 +526,17 @@ nav div.lock {
 }
 
 .redeem-icon{
-  width:70px;
-  height:70px;
+  width:auto;
+  height:auto;
   margin:0 auto 10px;
-  border-radius:50%;
-  background:linear-gradient(135deg,#f59e0b,#facc15);
+
+  background:none;      /* ⬅️ HAPUS BULAT */
+  box-shadow:none;      /* ⬅️ HAPUS GLOW */
+  border-radius:0;      /* ⬅️ HAPUS LINGKARAN */
+
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:28px;
-  color:#000;
-  box-shadow:0 6px 20px rgba(250,204,21,0.5);
 }
 
 .redeem-header h2{
@@ -1035,6 +1035,7 @@ nav div:nth-child(4){
   margin-left:auto;
   display:flex;
   align-items:center;
+  gap:8px; /* ⬅️ jarak antar icon & verifikasi */
 }
 
 .login-btn{
@@ -1437,7 +1438,7 @@ header{
 
 /* BOX */
 .notif-box{
-  width:320px;
+  width:70%;
   max-height:320px;
   background:#0f172a;
   border-radius:12px;
@@ -1503,8 +1504,8 @@ header{
 
 /* BOX */
 .notif-box{
-  width:70%;
-  max-height:320px;
+  width:320px;
+  max-height:400px;
   background:#0f172a;
   border-radius:12px;
   padding:16px;
@@ -1556,40 +1557,46 @@ header{
   color:#94a3b8;
 }
 
+.notiff,
+.notiff-desk{
+  position: static;
+}
+
 .notiff{
   position:absolute;
 
-  right:59px;
-  bottom:59px;
-  left:190px;
+  top:0;
+  right:90px; /* ⬅️ geser ke kiri dari verifikasi */
 
-  width:18px;
-  height:18px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  font-size:10px;
-  color:#ffffff;
-}
-
-@media (min-width: 1024px){
-.notiff-desk{
-  position:absolute;
-
-  right:59px;
-  bottom:59px;
-  left:475px;
-
-  width:18px;
-  height:18px;
+  width:28px;
+  height:28px;
 
   display:flex;
   align-items:center;
   justify-content:center;
 
-  font-size:10px;
-  color:#ffffff;
+  border-radius:8px;
+  background:#020617;
+  border:1px solid #1e293b;
+
+  cursor:pointer;
 }
+
+.logo-home{
+  width:120px;
+  height:auto;
+
+  margin-top:5px;
+  margin-bottom:8px; /* jarak ke tulisan */
+
+  display:block;
+}
+
+#home .left{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+
+  margin-top:-20px; /* jarak dari header */
 }
