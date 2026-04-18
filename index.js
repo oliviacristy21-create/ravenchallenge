@@ -1145,3 +1145,126 @@ function shareReferral(){
 
   window.open(`https://wa.me/?text=${encodeURIComponent(text)}`);
 }
+
+// ===============================
+// PREMIUM SPIN SYSTEM
+// ===============================
+
+let premiumWheel = document.getElementById("premiumWheelImg");
+let premiumSpinning = false;
+
+async function premiumSpin(){
+
+if(premiumSpinning) return;
+
+// cek login
+if(!isLogin()){
+showPopup("LOGIN DULU","Silakan login untuk menggunakan fitur ini.");
+return;
+}
+
+// cek title
+if(!document.getElementById("userBadge").innerHTML){
+showPopup("AKSES DITOLAK","Spin premium hanya untuk user yang memiliki title.");
+return;
+}
+
+premiumSpinning = true;
+
+const btn = document.getElementById("premiumSpinBtn");
+
+btn.disabled = true;
+btn.style.opacity = "0.6";
+btn.textContent = "MEMUTAR...";
+
+const token = localStorage.getItem("session_token");
+
+try{
+
+const res = await fetch(API,{
+method:"POST",
+body:new URLSearchParams({
+action:"spinPremium",
+token:token
+})
+});
+
+const data = await res.json();
+
+if(!data.status){
+showPopup("GAGAL",data.message);
+premiumSpinning = false;
+return;
+}
+
+// =====================
+// HITUNG POSISI RODA
+// =====================
+
+const index = data.index;
+
+// jumlah sektor roda premium
+const total = 6;
+
+const sector = 360 / total;
+const center = sector / 2;
+const pointer = 180; // pointer roda di atas
+
+const spins = 6;
+
+const offset = sector / 19;
+
+const finalDeg =
+(spins * 360) +
+((total - index) * sector) -
+offset;
+
+// reset animasi
+premiumWheel.style.transition = "none";
+premiumWheel.style.transform = "rotate(0deg)";
+
+requestAnimationFrame(()=>{
+requestAnimationFrame(()=>{
+premiumWheel.style.transition =
+"transform 5s cubic-bezier(.17,.67,.28,1)";
+premiumWheel.style.transform =
+`rotate(${finalDeg}deg)`;
+});
+});
+
+// =====================
+// HASIL SPIN
+// =====================
+
+setTimeout(()=>{
+
+showPopup("HASIL SPIN",data.label);
+
+// kalau reward poin update profile
+if(data.type === "point"){
+loadProfile();
+}
+
+premiumSpinning = false;
+
+const btn = document.getElementById("premiumSpinBtn");
+btn.disabled = false;
+btn.style.opacity = "1";
+btn.textContent = "SPIN";
+
+},5200);
+
+}catch(err){
+
+console.error(err);
+
+showPopup("ERROR","Server tidak merespon");
+
+premiumSpinning = false;
+
+}
+
+}
+
+// tombol spin
+document.getElementById("premiumSpinBtn").onclick = premiumSpin;
