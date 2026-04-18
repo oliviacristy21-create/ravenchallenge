@@ -1553,7 +1553,7 @@ header{
 .notiff{
   position:absolute;
 
-  top:0;
+  top:-3px;
   right:80px; /* ⬅️ geser ke kiri dari verifikasi */
 
   width:28px;
