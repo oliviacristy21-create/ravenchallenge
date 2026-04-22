@@ -1238,7 +1238,7 @@ premiumWheel.style.transform =
 
 setTimeout(()=>{
 
-showPopup("HASIL SPIN",data.label);
+showPopup("SELAMAT",data.label);
 
 // kalau reward poin update profile
 if(data.type === "point"){
