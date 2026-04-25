@@ -1268,8 +1268,3 @@ premiumSpinning = false;
 
 // tombol spin
 document.getElementById("premiumSpinBtn").onclick = premiumSpin;
-
-// TOURNAMEN
-function turney(){
-  window.location.href = "beranda.html";
-}
