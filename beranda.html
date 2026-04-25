@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Raven Tournament</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="beranda.css">
+
+</head>
+
+<body>
+
+<!-- HERO -->
+<div class="hero" id="top">
+  <h1>RAVEN TOURNAMENT</h1>
+  <p id="statusText">Memuat data...</p>
+</div>
+
+<div class="container">
+
+  <!-- INFO -->
+  <div class="info-grid">
+    <div class="info-box">
+      <small>GAME</small>
+      <h2 id="game">-</h2>
+    </div>
+
+    <div class="info-box">
+      <small>MODE</small>
+      <h2 id="mode">-</h2>
+    </div>
+
+    <div class="info-box">
+      <small>SLOT</small>
+      <h2 id="slot">-</h2>
+    </div>
+
+    <div class="info-box">
+      <small>HADIAH</small>
+      <h2 id="hadiah">-</h2>
+    </div>
+  </div>
+
+  <button onclick="logout()">Daftar Sekarang</button>
+
+  <div class="main">
+  <div class="card">
+    <h2>Daftar Tim</h2>
+    <div id="teamList"></div>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="card" id="schedule">
+  <h2>Jadwal Pertandingan</h2>
+  <div id="scheduleBox"></div>
+  </div>
+
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <div class="card">
+  <h2>🏆 Bagan Turnamen</h2>
+  <div id="bracketBox"></div>
+  </div>
+
+  </div>
+
+  <button onclick="logout()">Daftar Sekarang</button>
+
+  <div class="main">
+
+    <div class="card" id="rules">
+  <h2>📜 Peraturan Turnamen</h2>
+
+  <p style="color:#aaa;">
+  Harap membaca dan memahami seluruh peraturan sebelum mengikuti turnamen.
+</p>
+
+  <div class="rules-section">
+    <h3>1. Ketentuan Umum</h3>
+    <ul>
+      <li>Setiap tim wajib menggunakan nama tim yang sama seperti saat pendaftaran.</li>
+      <li>Setiap tim harus siap bermain sesuai jadwal yang telah ditentukan.</li>
+      <li>Dilarang keras menggunakan cheat, script ilegal, atau bug abuse.</li>
+      <li>Keputusan panitia bersifat mutlak dan tidak dapat diganggu gugat.</li>
+    </ul>
+
+    <h3>2. Kehadiran & Keterlambatan</h3>
+    <ul>
+      <li>Tim wajib hadir minimal 10 menit sebelum pertandingan dimulai.</li>
+      <li>Keterlambatan lebih dari 5 menit akan dianggap kalah (WO).</li>
+      <li>Jika kedua tim tidak hadir, maka match dianggap batal.</li>
+    </ul>
+
+    <h3>3. Sistem Pertandingan</h3>
+    <ul>
+      <li>Match dimainkan sesuai mode yang telah ditentukan (Clash Squad / Battle Royale).</li>
+      <li>Pemenang ditentukan berdasarkan hasil akhir pertandingan.</li>
+      <li>Tim yang menang akan lanjut ke babak berikutnya.</li>
+    </ul>
+
+    <h3>4. Larangan</h3>
+    <ul>
+      <li>Dilarang menggunakan cheat, hack, atau aplikasi pihak ketiga.</li>
+      <li>Dilarang melakukan toxic, menghina, atau provokasi terhadap lawan.</li>
+      <li>Dilarang menggunakan akun orang lain tanpa izin.</li>
+    </ul>
+
+    <h3>5. Dispute / Protes</h3>
+    <ul>
+      <li>Jika terjadi masalah, segera hubungi admin dengan bukti yang valid.</li>
+      <li>Protes tanpa bukti tidak akan diproses.</li>
+      <li>Keputusan akhir tetap di tangan admin.</li>
+    </ul>
+
+    <h3>6. Hadiah</h3>
+    <ul>
+      <li>Hadiah akan diberikan setelah turnamen selesai.</li>
+      <li>Pemenang wajib menghubungi admin untuk klaim hadiah.</li>
+      <li>Keterlambatan klaim lebih dari 2x24 jam dianggap hangus.</li>
+    </ul>
+
+  </div>
+</div>
+
+  </div>
+
+</div>
+
+<script src="beranda.js" defer></script>
+
+<footer class="footer">
+  <div class="footer-content">
+
+    <h2 class="footer-logo">RAVEN TOURNAMENT</h2>
+
+    <p class="footer-desc">
+      Platform turnamen esports untuk pemain yang ingin bersaing dan menjadi juara.
+    </p>
+
+    <div class="footer-links">
+  <a href="#top">Beranda</a>
+  <a href="#rules">Peraturan</a>
+  <a href="#schedule">Jadwal</a>
+  <a href="https://wa.me/6285182501382" target="_blank">Kontak</a>
+</div>
+
+    <p class="footer-copy">
+      © 2026 Raven Tournament. All Rights Reserved.
+    </p>
+
+  </div>
+</footer>
+
+</body>
+</html>

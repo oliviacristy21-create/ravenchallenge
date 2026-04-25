@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>RavenTournamen</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="turney.css">
+
+</head>
+
+<body>
+
+    <div class="overlay"></div>
+
+<header>
+RAVEN TOURNAMENT
+<p style="font-size:14px; margin-top:10px;">Turnamen Free Fire Terpanas</p>
+</header>
+
+<div class="container">
+
+<!-- INFO -->
+<div class="card" id="infoCard">
+  <h2>Info Turnamen</h2>
+
+  <div class="info-grid">
+    <div class="info-item">
+      <span>Game</span>
+      <b id="game">-</b>
+    </div>
+
+    <div class="info-item">
+      <span>Mode</span>
+      <b id="mode">-</b>
+    </div>
+
+    <div class="info-item">
+      <span>Slot</span>
+      <b id="slot">-</b>
+    </div>
+
+    <div class="info-item">
+      <span>Hadiah</span>
+      <b id="hadiah">-</b>
+    </div>
+  </div>
+
+  <div id="statusBadge" class="status-badge">Loading...</div>
+</div>
+
+<div id="previewModal" class="modal">
+  <div class="modal-content">
+    <h2 style="margin-bottom:20px; letter-spacing:1px;">
+  ⚠️ Konfirmasi Data Tim
+</h2>
+    <div id="previewData"></div>
+
+    <button class="btn-confirm" onclick="kirimFinal()">Konfirmasi</button>
+    <button class="btn-edit" onclick="batalPreview()">Edit</button>
+  </div>
+</div>
+
+<!-- FORM -->
+<div class="card" id="formCard">
+<h2>Daftar Tim</h2>
+
+<input type="text" id="namaTim" placeholder="Nama Tim">
+<input type="text" id="kapten" placeholder="Nama Kapten">
+<input type="text" id="idff" placeholder="ID Free Fire">
+<input type="text" id="wa" placeholder="No WhatsApp">
+<input type="number" id="anggota" placeholder="Jumlah Anggota">
+
+<div class="agree-box">
+  <input type="checkbox" id="agree">
+  <label for="agree">
+    Saya telah membaca dan menyetujui 
+<a href="ketentuan.html" target="_blank">Syarat & Ketentuan</a>
+  </label>
+</div>
+
+<button onclick="daftarTim()" id="btnDaftar">Daftar Sekarang</button>
+</div>
+
+<!-- STATUS -->
+<div class="card">
+<h2>Status</h2>
+<p id="status">Menunggu pendaftaran...</p>
+</div>
+
+</div>
+
+<script src="turney.js" defer></script>
+
+<div id="loadingOverlay">
+  <div class="loader-box">
+    <div class="spinner"></div>
+    <p>Mengirim data...</p>
+  </div>
+</div>
+
+<div id="successOverlay">
+  <div class="success-box">
+    <div class="checkmark">✔</div>
+    <h2>Berhasil!</h2>
+    <p>Tim kamu berhasil terdaftar</p>
+  </div>
+</div>
+
+<div class="footer">
+© 2026 Raven Tournament. All Rights Reserved.
+</div>
+
+</body>
+</html>

@@ -1,0 +1,434 @@
+body {
+  margin: 0;
+  background: #0a0a0a;
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* HERO */
+.hero {
+  padding: 60px 20px;
+  text-align: center;
+  background: radial-gradient(circle, #1a1a1a, #000);
+  border-bottom: 2px solid #ff3c3c;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: 32px;
+  letter-spacing: 2px;
+}
+
+.hero p {
+  margin-top: 10px;
+  color: #aaa;
+}
+
+/* CONTAINER */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* GRID INFO */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-top: -40px;
+}
+
+.info-box {
+  background: #111;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+  border: 1px solid #ff3c3c;
+  box-shadow: 0 0 15px rgba(255,0,0,0.3);
+}
+
+.info-box small {
+  color: #888;
+}
+
+.info-box h2 {
+  margin: 10px 0 0;
+}
+
+/* MAIN GRID */
+.main {
+  display: block;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+/* CARD */
+.card {
+  background: #111;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  width: 100%;
+  box-sizing: border-box; /* PENTING */
+}
+
+/* BUTTON */
+button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(45deg,#ff0000,#ff7300);
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .info-grid {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .main {
+    grid-template-columns: 1fr;
+  }
+}
+
+.bracket-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* BOX TIM */
+.team {
+  background: #0f0f0f;
+  border: 1px solid #ff3c3c;
+  padding: 8px;
+  margin: 4px 0;
+  border-radius: 6px;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+/* hover effect */
+.team:hover {
+  background: #1a1a1a;
+  transform: scale(1.03);
+}
+
+/* biar ada pemisah */
+.team:first-child {
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+#bracketBox {
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  z-index: 0;
+}
+
+.bracket {
+  display: flex;
+  gap: 80px;
+  padding: 20px;
+  position: relative;
+}
+
+.round {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+/* MATCH BOX (UPGRADE) */
+.match {
+  background: linear-gradient(145deg, #111, #1c1c1c);
+  border: 1px solid #ff3c3c;
+  padding: 12px;
+  margin: 30px 0;
+  min-width: 160px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(255,0,0,0.3);
+  position: relative;
+  transition: 0.2s;
+  z-index: 2;
+}
+
+.match:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255,0,0,0.6);
+}
+
+/* TEAM TEXT */
+.match div {
+  padding: 4px 0;
+}
+
+/* GARIS CONNECTOR */
+.line {
+  position: absolute;
+  width: 40px;
+  height: 2px;
+  background: #ff3c3c;
+  z-index: 1;
+}
+
+/* VERTICAL LINE */
+.v-line {
+  position: absolute;
+  width: 2px;
+  background: #ff3c3c;
+  z-index: 1;
+}
+
+.winner {
+  background: linear-gradient(45deg,#ff0000,#ff7300);
+  font-weight: bold;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px gold;
+  }
+  to {
+    text-shadow: 0 0 15px orange;
+  }
+}
+
+.champion {
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  background: linear-gradient(45deg,#ffd700,#ffae00);
+  color: black;
+  font-weight: bold;
+  box-shadow: 0 0 15px rgba(255,215,0,0.6);
+}
+
+.trophy {
+  font-size: 40px;
+  display: block;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.champion {
+  animation: pop 0.5s ease;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.loser {
+  background: #2a0f0f;
+  border: 1px solid #ff0000;
+  color: #ff0000;
+  opacity: 0.6;
+  position: relative;
+}
+
+/* tulisan KO */
+.loser::after {
+  content: "KO";
+  position: absolute;
+  right: 8px;
+  top: 5px;
+  font-size: 10px;
+  color: red;
+  font-weight: bold;
+}
+
+.vs {
+  font-size: 10px;
+  color: #ffffff;
+  margin: 2px 0;
+  opacity: 0.7;
+  letter-spacing: 1px;
+}
+
+.rules-section {
+  color: #ccc;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.rules-section h3 {
+  margin-top: 15px;
+  color: #ff3c3c;
+  font-size: 15px;
+}
+
+.rules-section ul {
+  padding-left: 18px;
+}
+
+.rules-section li {
+  margin-bottom: 6px;
+}
+
+.footer {
+  background: #050505;
+  border-top: 1px solid #ff3c3c;
+  margin-top: 40px;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.footer-logo {
+  margin: 0;
+  color: #ff3c3c;
+  letter-spacing: 2px;
+}
+
+.footer-desc {
+  color: #aaa;
+  font-size: 13px;
+  margin: 10px 0 20px;
+}
+
+.footer-links {
+  margin-bottom: 20px;
+}
+
+.footer-links a {
+  color: #ccc;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+.footer-links a:hover {
+  color: #ff3c3c;
+}
+
+.footer-copy {
+  font-size: 12px;
+  color: #666;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.live-btn {
+  background: #ff0000;
+  color: white;
+  padding: 6px 12px;
+  font-size: 11px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  position: relative;
+}
+
+/* titik live */
+.live-btn::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: #ff0000;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 5px red;
+  animation: liveBlink 1s infinite;
+}
+
+/* animasi kedip + glow */
+@keyframes liveBlink {
+  0% {
+    opacity: 1;
+    box-shadow: 0 0 5px red, 0 0 10px red;
+  }
+  50% {
+    opacity: 0.3;
+    box-shadow: 0 0 2px red;
+  }
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 5px red, 0 0 10px red;
+  }
+}
+
+/* hover makin nyala */
+.live-btn:hover {
+  box-shadow: 0 0 10px red, 0 0 20px red;
+}
+
+.live-btn:hover {
+  background: #cc0000;
+  box-shadow: 0 0 8px red;
+}
+
+.not-live {
+  color: #555;
+  font-size: 12px;
+}
+
+.schedule-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0f0f0f;
+  border: 1px solid #222;
+  border-left: 3px solid #ff3c3c;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.team-card {
+  background: #0f0f0f;
+  border: 1px solid #ff3c3c;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  transition: 0.2s;
+  box-shadow: 0 0 10px rgba(255,0,0,0.2);
+}
+
+.team-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255,0,0,0.5);
+}
+
+.team-name {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.team-captain {
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 5px;
+}
+
+/* HP jadi 2 kolom */
+@media(max-width:768px){
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
