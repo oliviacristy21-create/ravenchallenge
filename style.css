@@ -1656,3 +1656,8 @@ cursor:pointer;
 .premium-spin-btn:active{
 transform:scale(0.95);
 }
+
+.guide-list a {
+  color: #ff3c3c;
+  text-decoration: none;
+}
