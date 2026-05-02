@@ -596,5 +596,39 @@ SPIN 10 POIN
 
 <div id="topNotif"></div>
 
+<div id="promoPopup" class="promo-overlay">
+  <div class="promo-box">
+
+    <img id="promoImg" class="promo-img" />
+
+    <div class="promo-content">
+      <h3 id="promoTitle"></h3>
+      <p id="promoDesc"></p>
+
+      <!-- GARIS PEMBATAS -->
+  <div class="promo-divider"></div>
+
+      <!-- LINK TEXT (lebih clean) -->
+      <p class="promo-text">
+        <a id="promoLink" target="_blank" class="promo-link-text">Klik disini</a>
+          untuk gabung saluran WhatsApp RavenStore
+      </p>
+
+      <!-- GARIS PEMBATAS -->
+  <div class="promo-divider"></div>
+
+      <!-- CHECKBOX -->
+      <label class="promo-checkbox">
+        <input type="checkbox" id="dontShowPromo">
+        <span>Jangan tampilkan lagi</span>
+      </label>
+
+    </div>
+
+    <button class="promo-close" onclick="closePromo()">✕</button>
+
+  </div>
+</div>
+
 </body>
 </html>
