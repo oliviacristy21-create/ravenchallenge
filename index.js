@@ -202,6 +202,7 @@ async function loadPopupPromo(){
 
     setTimeout(()=>{
       document.getElementById("promoPopup").classList.add("show");
+      document.body.classList.add("no-scroll");
     }, 800);
 
   }catch(err){
@@ -222,6 +223,7 @@ function closePromo(){
   }
 
   document.getElementById("promoPopup").classList.remove("show");
+  document.body.classList.remove("no-scroll");
 }
 
 async function loadNews(){
