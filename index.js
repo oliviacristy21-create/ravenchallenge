@@ -170,6 +170,60 @@ if(r.user.title){
 
 }
 
+async function loadPopupPromo(){
+
+  if(!isLogin()) return;
+
+  // 🔥 CEK LOCAL STORAGE (3 JAM)
+  const lastHide = localStorage.getItem("hidePromoUntil");
+  if(lastHide && Date.now() < Number(lastHide)){
+    return;
+  }
+
+  const f = new URLSearchParams();
+  f.append("action","getPopupPromo");
+
+  try{
+    const res = await fetch(API,{
+      method:"POST",
+      body:f
+    });
+
+    const r = await res.json();
+
+    if(!r.status) return;
+
+    const d = r.data;
+
+    document.getElementById("promoImg").src = d.image_url;
+    document.getElementById("promoTitle").innerText = d.title;
+    document.getElementById("promoDesc").innerText = d.description;
+    document.getElementById("promoLink").href = d.link;
+
+    setTimeout(()=>{
+      document.getElementById("promoPopup").classList.add("show");
+    }, 800);
+
+  }catch(err){
+    console.error(err);
+  }
+}
+
+function closePromo(){
+
+  const checkbox = document.getElementById("dontShowPromo");
+
+  // 🔥 kalau dicentang → simpan 3 jam
+  if(checkbox.checked){
+    const threeHours = 3 * 60 * 60 * 1000;
+    const expireTime = Date.now() + threeHours;
+
+    localStorage.setItem("hidePromoUntil", expireTime);
+  }
+
+  document.getElementById("promoPopup").classList.remove("show");
+}
+
 async function loadNews(){
   const f=new URLSearchParams();
   f.append("action","getNews");
@@ -659,6 +713,7 @@ document.addEventListener("DOMContentLoaded", () => {
   startLiveFeed();
   loadNotifications();
   loadNotifIcon();
+  loadPopupPromo();
 
   if (isLogin()) {
     showTab("home", document.querySelector("nav div[data-tab='home']"));
