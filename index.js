@@ -34,6 +34,32 @@ function showTab(id, el){
   if(sideTarget) sideTarget.classList.add('active');
 }
 
+async function checkMaintenance(){
+
+  try{
+    const f = new URLSearchParams();
+    f.append("action","getMaintenance");
+
+    const res = await fetch(API,{
+      method:"POST",
+      body:f
+    });
+
+    const r = await res.json();
+
+    if(r.status && r.maintenance){
+      window.location.replace("maintenance.html"); // 🔥 lebih clean dari href
+      return true;
+    }
+
+    return false;
+
+  }catch(err){
+    console.error(err);
+    return false;
+  }
+}
+
 async function loadProfile(){
   if (!isLogin()) {
     document.getElementById("profile").innerHTML = `
@@ -705,7 +731,12 @@ function activateHome() {
   showTab("home", document.querySelector("nav div[data-tab='home']"));
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+
+  const isMaint = await checkMaintenance();
+
+  if(isMaint) return;
+  
   loadNews();
   loadChallenge();
   loadProfile();
