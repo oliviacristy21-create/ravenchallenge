@@ -740,6 +740,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   loadNews();
   loadChallenge();
   loadProfile();
+  checkAdminPanel();
   lockMenuIfNotLogin();
   lockRedeemIfNotLogin();
   checkTransferNotif();
@@ -1356,3 +1357,86 @@ premiumSpinning = false;
 
 // tombol spin
 document.getElementById("premiumSpinBtn").onclick = premiumSpin;
+
+async function checkAdminPanel(){
+
+  const token = localStorage.getItem("session_token");
+
+  if(!token) return;
+
+  try{
+
+    const form = new FormData();
+    form.append("action","checkAdmin");
+    form.append("token",token);
+
+    const res = await fetch(API,{
+      method:"POST",
+      body:form
+    });
+
+    const data = await res.json();
+
+    if(data.admin){
+
+      const btn = document.getElementById("adminPanelBtn");
+
+      if(btn){
+        btn.style.display = "flex";
+      }
+
+    }
+
+  }catch(err){
+    console.log(err);
+  }
+
+}
+
+const adminBtn = document.getElementById("adminPanelBtn");
+
+if(adminBtn){
+
+  adminBtn.addEventListener("click",()=>{
+
+    window.location.href = "panel.html";
+
+  });
+
+}
+
+setInterval(()=>{
+
+  const token =
+    localStorage.getItem("session_token");
+
+  if(!token) return;
+
+  fetch(API,{
+    method:"POST",
+    body:new URLSearchParams({
+      action:"pingOnline",
+      token:token
+    })
+  });
+
+},15000);
+
+window.addEventListener("beforeunload",()=>{
+
+  const token =
+    localStorage.getItem("session_token");
+
+  if(!token) return;
+
+  navigator.sendBeacon(
+    API,
+
+    new URLSearchParams({
+      action:"offlineUser",
+      token:token
+    })
+
+  );
+
+});
