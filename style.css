@@ -1834,3 +1834,126 @@ body.no-scroll{
   height:100vh;
   touch-action:none;
 }
+
+/* =========================
+   ADMIN PANEL BUTTON
+========================= */
+
+.admin-panel-btn{
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  padding: 14px;
+  margin-top: 10px;
+
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,215,0,0.14),
+      rgba(255,140,0,0.08)
+    );
+
+  border: 1px solid rgba(255,215,0,0.15);
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  transition: .25s;
+}
+
+.admin-panel-btn:hover{
+  transform: translateY(-2px);
+  border-color: rgba(255,215,0,0.35);
+
+  box-shadow:
+    0 0 18px rgba(255,215,0,0.12);
+}
+
+/* glow */
+.admin-panel-btn::before{
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,0.06),
+      transparent
+    );
+
+  transform: translateX(-100%);
+  transition: 0.8s;
+}
+
+.admin-panel-btn:hover::before{
+  transform: translateX(100%);
+}
+
+/* =========================
+   ICON
+========================= */
+
+.admin-icon{
+  width: 46px;
+  height: 46px;
+
+  border-radius: 14px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:
+    linear-gradient(
+      135deg,
+      #facc15,
+      #f59e0b
+    );
+
+  color:#111827;
+
+  font-size:18px;
+
+  box-shadow:
+    0 0 18px rgba(250,204,21,0.35);
+}
+
+/* =========================
+   TEXT
+========================= */
+
+.admin-info{
+  display:flex;
+  flex-direction:column;
+  flex:1;
+}
+
+.admin-title{
+  font-size:14px;
+  font-weight:700;
+  color:white;
+}
+
+.admin-info small{
+  font-size:11px;
+  color:#facc15;
+  margin-top:2px;
+}
+
+/* =========================
+   ARROW
+========================= */
+
+.admin-arrow{
+  color:#facc15;
+  font-size:13px;
+  opacity:.8;
+}
