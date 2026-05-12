@@ -72,6 +72,11 @@ button:active{
   text-align:center;
 }
 
+.footer a{
+  color:#fff600;
+  text-decoration:none;
+}
+
 .spinner{
   width:40px;
   height:40px;
