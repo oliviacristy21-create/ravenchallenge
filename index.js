@@ -569,10 +569,10 @@ function animateWheel(label, point) {
 
   const prizes = [
     "ZONK",
-    "1 poin",
-    "3 poin",
     "10 poin",
-    "100 poin"
+    "30 poin",
+    "50 poin",
+    "150 poin"
   ];
 
   const index = prizes.indexOf(label);
