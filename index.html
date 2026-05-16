@@ -83,37 +83,92 @@
   <div class="content">
 
 <!-- HOME -->
-<div id="home" class="section split active">
+<div id="home" class="section active">
 
-  <div class="left">
+  <!-- HERO -->
+  <div class="home-hero">
 
-  <div class="logo-icon">
-  <img src="https://i.ibb.co.com/bj919sdw/Whats-App-Image-2026-04-17-at-23-50-01-removebg-preview.png" class="logo-home">
+    <div class="hero-left">
+
+      <img
+        src="https://i.ibb.co.com/bj919sdw/Whats-App-Image-2026-04-17-at-23-50-01-removebg-preview.png"
+        class="hero-logo"
+      >
+
+      <div>
+        <div class="hero-badge">
+          RAVENSTORE MEMBER
+        </div>
+
+        <h1>Dashboard RavenStore</h1>
+
+        <p>
+          Event, reward, spin poin, dan fitur member RavenStore.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="hero-points">
+
+      <span>Total Poin</span>
+
+      <h2 id="homePoint">0</h2>
+
+    </div>
+
   </div>
-  <h1 class="home-title">RAVENSTORE</h1>
-<p class="home-subtitle">
-  Informasi, event, dan update terbaru seputar RavenStore, Mobile Legends, dan Free Fire
-</p>
-  <div class="card">
-  <h3>Petunjuk Penggunaan RavenStore</h3>
 
-  <ol class="guide-list">
-    <li>Login menggunakan PIN yang kamu dapatkan saat pendaftaran.</li>
-    <li>Gunakan fitur Spin Poin untuk mendapatkan poin harian.</li>
-    <li>Ikuti event Tebak Angka sesuai digit yang ditentukan.</li>
-    <li>Poin dapat digunakan untuk di tukarkan dengan diamond atau item lainnya di RavenStore.</li>
-    <li>Daftarkan tim kamu untuk mengikuti tournamen seru.
-      <a href="beranda.html" target="_blank">Daftar Disini</a>
-    </li>
-  </ol>
+  <!-- QUICK MENU -->
+  <div class="quick-menu-grid">
 
-</div>
+    <div class="quick-card" onclick="showTab('spin')">
+      <i class="fa-solid fa-circle-notch"></i>
+      <span>Spin Poin</span>
+    </div>
 
-</div>
+    <div class="quick-card" onclick="goRedeem()">
+      <i class="fa-solid fa-gift"></i>
+      <span>Redeem</span>
+    </div>
 
-<div class="right">
-  <div id="newsBox"></div>
-</div>
+    <div class="quick-card" onclick="showTab('tebak')">
+      <i class="fa-solid fa-keyboard"></i>
+      <span>Tebak</span>
+    </div>
+
+    <div class="quick-card" onclick="window.location.href='beranda.html'">
+      <i class="fa-solid fa-trophy"></i>
+      <span>Event</span>
+    </div>
+
+  </div>
+
+  <!-- LIVE INFO -->
+  <div class="dashboard-card">
+
+    <div class="card-title">
+      <i class="fa-solid fa-bolt"></i>
+      Live Information
+    </div>
+
+    <div class="live-info">
+      Welcome to RavenStore dashboard member area.
+    </div>
+
+  </div>
+
+  <!-- NEWS -->
+  <div class="dashboard-card">
+
+    <div class="card-title">
+      <i class="fa-solid fa-newspaper"></i>
+      News & Update
+    </div>
+
+    <div id="newsBox"></div>
+
+  </div>
 
 </div>
 
