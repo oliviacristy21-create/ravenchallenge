@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RavenStore Admin Panel</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="panel.css">
+
+</head>
+<body>
+
+<!-- =========================
+     SIDEBAR
+========================= -->
+
+<div class="sidebar">
+
+  <div class="logo">
+    <div class="logo-box">
+      <i class="fa-solid fa-crown"></i>
+    </div>
+
+    <div>
+      <h2>RavenStore</h2>
+      <small>Admin Dashboard</small>
+    </div>
+  </div>
+
+  <div class="menu">
+
+    <div class="menu-item active" data-page="dashboard">
+      <i class="fa-solid fa-chart-line"></i>
+      <span>Dashboard</span>
+    </div>
+
+    <div class="menu-item" data-page="news">
+      <i class="fa-solid fa-newspaper"></i>
+      <span>Kelola News</span>
+    </div>
+
+    <div class="menu-item" data-page="notif">
+      <i class="fa-solid fa-bell"></i>
+      <span>Notifikasi</span>
+    </div>
+
+    <div class="menu-item" data-page="challenge">
+      <i class="fa-solid fa-dice"></i>
+      <span>Tebak Angka</span>
+    </div>
+
+    <div class="menu-item" data-page="redeem">
+      <i class="fa-solid fa-gift"></i>
+      <span>Redeem Code</span>
+    </div>
+
+    <div class="menu-item" data-page="claim">
+      <i class="fa-solid fa-wallet"></i>
+      <span>Penukaran Poin</span>
+    </div>
+
+    <div class="menu-item" data-page="feedback">
+      <i class="fa-solid fa-comments"></i>
+      <span>Feedback User</span>
+    </div>
+
+    <div class="menu-item" data-page="verif">
+      <i class="fa-solid fa-user-check"></i>
+      <span>Verifikasi User</span>
+    </div>
+
+    <div class="menu-item" data-page="maintenance">
+      <i class="fa-solid fa-screwdriver-wrench"></i>
+      <span>Maintenance</span>
+    </div>
+
+    <div class="menu-item" data-page="logout">
+      <i class="fa-solid fa-right-from-bracket"></i>
+      <span>Keluar</span>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<div class="mobile-topbar">
+
+  <button class="mobile-menu-btn" onclick="toggleSidebar()">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+
+  <h2>RavenStore</h2>
+
+</div>
+
+<div class="sidebar-overlay" onclick="closeSidebar()"></div>
+
+<div class="main">
+
+  <div id="dashboardPage" class="page-view"></div>
+
+  <div id="newsPage" class="page-view" style="display:none"></div>
+
+  <div id="notifPage" class="page-view" style="display:none"></div>
+
+  <div id="challengePage" class="page-view" style="display:none"></div>
+
+  <div id="redeemPage" class="page-view" style="display:none"></div>
+
+  <div id="claimPage" class="page-view" style="display:none"></div>
+
+  <div id="feedbackPage" class="page-view" style="display:none"></div>
+
+  <div id="verifPage" class="page-view" style="display:none"></div>
+
+  <div id="maintenancePage" class="page-view" style="display:none"></div>
+
+</div>
+
+<script src="panel.js" defer></script>
+
+</body>
+</html>
