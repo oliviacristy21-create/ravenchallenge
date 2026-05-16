@@ -97,6 +97,13 @@ document.getElementById("emailUser").textContent = r.user.email;
 
 document.getElementById("pointBig").textContent = r.user.point;
 
+const homePoint =
+  document.getElementById("homePoint");
+
+if(homePoint){
+  homePoint.textContent = r.user.point;
+}
+
 document.getElementById("loginBtn").style.display = "none";
 
 document.getElementById("statusAkun").style.display = "block";
