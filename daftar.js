@@ -12,6 +12,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnNext = document.getElementById("btnNext");
   const referral = document.getElementById("referral");
 
+  // VALIDASI INPUT ANGKA
+email.addEventListener("input", () => {
+  email.value = email.value.replace(/\D/g, "");
+});
+
   if (!overlay || !username) return; // ⬅️ PENYELAMAT
 
   function modal(type,msg){
@@ -32,10 +37,22 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   window.register = async function(){
-    if(!username.value || !email.value || !agree.checked){
-      modal("err","Lengkapi data & centang persetujuan");
-      return;
-    }
+    const gameId = email.value.trim();
+
+if(!username.value.trim()){
+  modal("err","Username wajib diisi");
+  return;
+}
+
+if(!/^\d{8,}$/.test(gameId)){
+  modal("err","ID game harus angka minimal 8 digit");
+  return;
+}
+
+if(!agree.checked){
+  modal("err","Centang persetujuan terlebih dahulu");
+  return;
+}
 
     modal("load","Mendaftarkan akun...");
 
