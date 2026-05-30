@@ -1,26 +1,43 @@
 body{
   margin:0;
-  font-family:system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
-  background:#020617 url(bg.jpg);
-  background-size:120%;
+  font-family:Inter,system-ui,sans-serif;
+
+  background:
+  linear-gradient(
+  rgba(2,6,23,.82),
+  rgba(2,6,23,.82)
+  ),
+  url(https://dl.dir.freefiremobile.com/common/web_event/official2.ff.garena.all/202210/526ab8efaf60be59ccf03e314e019a3a.jpg);
+
+  background-size:cover;
+  background-position:center;
+
   color:#fff;
+
   display:flex;
-  align-items:center;
   justify-content:center;
+  align-items:center;
+
   min-height:100vh;
+
+  padding:20px;
 }
 
 .card{
   width:85%;
   max-width:380px;
   background:rgba(2,6,23,.65);
-  border:1px solid #1e293b;
+  border:1px solid #a855f7;
   border-radius:16px;
   padding:22px;
   box-shadow:0 0 40px rgba(0,0,0,.6);
 }
 
 h2{text-align:center;margin:0 0 10px}
+
+h2 span{
+  color:#a855f7;
+}
 
 .desc{
   font-size:13px;
@@ -49,21 +66,40 @@ h2{text-align:center;margin:0 0 10px}
 }
 
 .pin-input:focus{
-  outline:none;
-  border-color:#fff600;
+ outline:none;
+
+  border-color:#a855f7;
+
+  box-shadow:
+  0 0 0 3px rgba(168,85,247,.15);
+}
+
+.warn{
+  font-size:12px;
+  color:#ff0000;
+  margin-bottom:10px;
+  margin-top: 10px;
 }
 
 button{
   width:100%;
   padding:13px;
-  background:#fff600;
+  background:
+  linear-gradient(
+  135deg,
+  #9333ea,
+  #7e22ce
+  );
+
   border:none;
   border-radius:12px;
   font-weight:700;
   cursor:pointer;
 }
 
-button:active{transform:scale(.98)}
+button:active{
+  transform:scale(.98);
+}
 
 .footer{
   margin-top:14px;
@@ -73,7 +109,7 @@ button:active{transform:scale(.98)}
 }
 
 .footer a{
-  color:#fff600;
+  color:#a855f7;
   text-decoration:none;
 }
 
