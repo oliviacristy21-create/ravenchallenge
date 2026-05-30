@@ -10,31 +10,60 @@
 <body>
 
 <div class="card">
-  <h2>RAVENSTORE</h2>
+  <div class="icon-wrap">
+  👤
+</div>
+
+<h2>
+  <span>DAFTAR</span> AKUN BARU
+</h2>
+
   <div class="desc">
     Daftar untuk mengikuti challenge berhadiah poin
   </div>
+
+  <div class="divider"></div>
 
   <div class="warn">
     ⚠ ID game harus valid.
     Jika berbeda, poin tidak kami tanggung.
   </div>
 
-  <input id="username" class="input" placeholder="Username RavenStore">
-  <input 
-  id="email"
-  class="input"
-  placeholder="ID Game"
-  inputmode="numeric"
-  maxlength="20"
-  autocomplete="off"
->
-  <input id="referral" class="input" placeholder="Kode referral (opsional)">
+  <label class="label">
+Username
+</label>
+
+<input
+id="username"
+class="input"
+placeholder="Masukkan username kamu"> 
+
+<label class="label">
+ID Game
+</label>
+
+<input
+id="email"
+class="input"
+placeholder="Masukkan ID Game"
+inputmode="numeric"
+maxlength="20"
+autocomplete="off">
+
+<label class="label">
+Kode Referral
+<span>(Opsional)</span>
+</label>
+
+<input
+id="referral"
+class="input"
+placeholder="Masukkan kode referral">
 
   <div style="margin:10px 0;font-size:13px;color:#cbd5f5;">
     <label>
     <input type="checkbox" id="agree">
-    Saya menyetujui <a href="kebijakan.html" style="color:#fff600">Syarat & Ketentuan</a>
+    Saya menyetujui <a href="kebijakan.html" style="color:#a855f7">Syarat & Ketentuan</a>
   </label>
   </div>
 
@@ -56,11 +85,11 @@ display:none;align-items:center;justify-content:center;z-index:99;">
   background:#020617;
   padding:28px;
   border-radius:16px;
-  border:1px solid #1e293b;
+  border:1px solid #a855f7;
   text-align:center;
   min-width:220px;">
     <div id="icon"></div>
-    <div id="text" style="margin-top:12px;font-size:14px"></div>
+    <div id="text" style="margin-top:12px;font-size:12px"></div>
     <div id="pinBox" style="
   margin-top:14px;
   font-size:20px;
@@ -75,7 +104,7 @@ display:none;align-items:center;justify-content:center;z-index:99;">
   padding:10px 18px;
   border-radius:10px;
   border:none;
-  background:#fff600;
+  background:#a855f7;
   font-weight:700;
   cursor:pointer;
 ">
