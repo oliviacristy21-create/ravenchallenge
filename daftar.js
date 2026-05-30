@@ -84,7 +84,7 @@ if(!agree.checked){
         pinBox.textContent = "PIN LOGIN: " + r.pin;
 
         text.textContent =
-          "Simpan PIN ini. Screenshot atau catat PIN kamu.";
+          "⚠ Simpan PIN ini. Screenshot atau catat PIN kamu.";
 
         btnNext.style.display = "block";
       }else{
