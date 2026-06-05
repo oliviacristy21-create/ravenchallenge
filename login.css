@@ -127,3 +127,39 @@ button:active{
 
 .success{font-size:38px;color:#22c55e}
 .error{font-size:38px;color:#ef4444}
+
+.input-group{
+  margin-bottom:18px;
+}
+
+#gameId{
+  width:100%;
+  box-sizing:border-box;
+
+  height:48px;
+  padding:0 14px;
+
+  border-radius:12px;
+  border:2px solid #1e293b;
+
+  background:rgba(255,255,255,.95);
+  color:#020617;
+
+  font-size:15px;
+  font-weight:600;
+
+  transition:.25s;
+}
+
+#gameId::placeholder{
+  color:#64748b;
+  font-weight:500;
+}
+
+#gameId:focus{
+  outline:none;
+  border-color:#a855f7;
+
+  box-shadow:
+  0 0 0 3px rgba(168,85,247,.15);
+}
