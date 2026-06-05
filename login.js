@@ -32,8 +32,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   window.login = async function(){
+
+    const gameId = document.getElementById("gameId").value.trim();
+
     let pin = "";
     inputs.forEach(i=>pin+=i.value);
+
+    if(!gameId){
+      modal("err","ID Game wajib diisi");
+      return;
+    }
 
     if(pin.length!==6){
       modal("err","PIN harus 6 digit");
@@ -45,6 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
     try{
       const form = new URLSearchParams();
       form.append("action","login");
+      form.append("gameId",gameId);
       form.append("pin",pin);
 
       const res = await fetch(API,{ method:"POST", body:form });
